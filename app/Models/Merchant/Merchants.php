@@ -82,4 +82,20 @@ class Merchants extends Model
     {
         return $this->hasMany(MerchantFacilities::class, $this->primaryKey, $this->primaryKey);
     }
+
+    // Scope
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('merchant_status', $status);
+    }
+
+    public function scopeRestaurant($query)
+    {
+        return $query->where('merchant_type_id', 1);
+    }
+
+    public function scopeTourismVillage($query)
+    {
+        return $query->where('merchant_type_id', 2);
+    }
 }
