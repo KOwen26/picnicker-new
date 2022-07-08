@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('merchant_owner', function (Blueprint $table) {
-            $table->string('merchant_owner_id');
+            $table->string('merchant_owner_id')->primary();
             $table->string('merchant_owner_name')->nullable();
             $table->string('merchant_owner_gender')->nullable();
             $table->string('merchant_owner_phone')->nullable();

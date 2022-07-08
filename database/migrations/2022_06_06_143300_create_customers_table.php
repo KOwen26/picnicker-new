@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('customer_google_id')->nullable();
             $table->string('customer_name');
             $table->string('customer_email');
-            $table->string('customer_phone');
-            $table->string('customer_address');
+            $table->string('customer_phone')->nullable();
+            $table->string('customer_address')->nullable();
             $table->string('customer_location')->nullable();
             $table->string('customer_password')->nullable();
             $table->string('customer_status');

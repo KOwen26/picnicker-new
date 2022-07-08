@@ -39,7 +39,7 @@ class MerchantsRegister extends Component
 
         event(new Registered($merchant));
 
-        Auth::loginUsingId($merchant->merchant_owner_id, true);
+        Auth::guard('merchant')->loginUsingId($merchant->merchant_owner_id, true);
 
         return redirect()->intended(route('merchant.home'));
     }

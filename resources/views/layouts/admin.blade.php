@@ -8,7 +8,7 @@ $menu_list = collect([
     ['title' => 'Customers', 'index' => '0', 'type' => 'customer', 'icon' => 'fas fa-user', 'route' => 'admin.customer'],
     ['title' => 'Customer Feedback', 'index' => '0', 'type' => 'customer', 'icon' => 'fas fa-face-smile', 'route' => 'admin.customer_feedback'],
     ['title' => 'Merchants', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-store', 'route' => 'admin.merchant'],
-    ['title' => 'Merchant Tickets', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-ticket', 'route' => 'admin.merchant_tickets'],
+    // ['title' => 'Merchant Tickets', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-ticket', 'route' => 'admin.merchant_tickets'],
     ['title' => 'Categories', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-cubes-stacked', 'route' => 'admin.employee'],
     ['title' => 'Facilities', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-list-check', 'route' => 'admin.facilities'],
     ['title' => 'Employees', 'index' => '0', 'type' => 'picnicker', 'icon' => 'fas fa-users', 'route' => 'admin.employee'],

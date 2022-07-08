@@ -144,7 +144,7 @@ $bank_accounts = $merchant?->BankAccounts?->first();
                         <h3 class="mb-3 font-semibold">Jadwal Buka-Tutup Merchant </h3>
                         <div class="">
                             <ul>
-                                @foreach (collect(json_decode($merchant->merchant_open_schedule, true)) as $open_schedule)
+                                @foreach (collect(json_decode($merchant->merchant_schedule, true)) as $open_schedule)
                                     <li class="ml-2">
                                         <span class="inline-block w-4 mr-2 font-semibold">
                                             {{ $loop->iteration }}.

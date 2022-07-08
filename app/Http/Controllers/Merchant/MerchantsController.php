@@ -14,7 +14,7 @@ class MerchantsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Merchants $merchants)
     {
         //
     }

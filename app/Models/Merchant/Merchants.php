@@ -2,6 +2,7 @@
 
 namespace App\Models\Merchant;
 
+use App\Models\Admin\Cities;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +22,7 @@ class Merchants extends Model
     protected $guarded = array();
     protected $casts = [
         'merchant_pictures',
-        'merchant_open_schedule',
+        'merchant_schedule',
     ];
     protected $hidden = ['merchant_owner_id', 'created_at'];
     /**
@@ -71,6 +72,12 @@ class Merchants extends Model
     {
         $foreignKey = "merchant_type_id";
         return $this->belongsTo(MerchantType::class, $foreignKey, $foreignKey);
+    }
+
+    public function Cities()
+    {
+        $foreignKey = "city_id";
+        return $this->belongsTo(Cities::class, $foreignKey, $foreignKey);
     }
 
     public function BankAccounts()

@@ -33,13 +33,13 @@ module.exports = {
                 },
                 success: {
                     // 50: "#47467d",
-                    100: "#0E613A",
+                    100: "#F6FDF9",
                     // 200: "#333269",
-                    300: "#148751",
+                    300: "#E4F8EE",
                     // 400: "#1f1e55",
-                    500: "#1CC174",
+                    500: "#A9E7CA",
                     // 600: "#0b0a41",
-                    700: "#60D49E",
+                    700: "#72D9A9",
                     // 800: "#00002d",
                     900: "#25C37A",
                 },
@@ -137,6 +137,7 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
+        // require("@tailwindcss/aspect-ratio"),
         require("flowbite/plugin"),
     ],
 };

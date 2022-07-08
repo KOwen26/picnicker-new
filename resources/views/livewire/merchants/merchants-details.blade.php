@@ -37,7 +37,7 @@ $merchant = null;
                         </a>
                     </li>
                     <li class="p-2 px-4">
-                        <a href="#merchant_open_schedule" class="my-2">
+                        <a href="#merchant_schedule" class="my-2">
                             <i class="mr-2 fas fa-clock"></i>
                             Jam Buka Merchant
                         </a>
@@ -207,12 +207,12 @@ $merchant = null;
                         </div>
                     </div>
                     <hr>
-                    <h4 class="mt-6 text-xl font-medium" id="merchant_open_schedule">Jam Buka-Tutup Merchant</h4>
+                    <h4 class="mt-6 text-xl font-medium" id="merchant_schedule">Jam Buka-Tutup Merchant</h4>
                     <div class="grid grid-cols-1 gap-5 py-6 ">
                         <div>
                             {{-- <label for="merchant_name" class="text-sm text-gray-700">Pilih hari & jam buka-tutup
                                 merchant</label> --}}
-                            <livewire:merchants.merchants-open-schedule :merchant_open_schedule="$merchant_open_schedule" />
+                            <livewire:merchants.merchants-open-schedule :merchant_schedule="$merchant_schedule" />
 
                         </div>
                     </div>

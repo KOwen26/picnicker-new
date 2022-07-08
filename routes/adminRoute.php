@@ -8,7 +8,6 @@ use App\Http\Controllers\Customer\CustomerFeedbackController;
 use App\Http\Controllers\Merchant\MerchantsController;
 // use App\Http\Controllers\Merchant\MerchantOwnerController;
 // use App\Http\Controllers\Merchant\MerchantTypeController;
-use App\Http\Controllers\Merchant\MerchantTicketsController;
 // use App\Http\Controllers\Merchant\MerchantFacilitiesController;
 // use App\Http\Controllers\Merchant\MerchantBankAccountsController;
 
@@ -20,7 +19,6 @@ use App\Http\Controllers\Admin\CitiesController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\Admin\FacilitiesController;
 // use App\Http\Controllers\Admin\ProvincesController;
-// use App\Http\Controllers\Admin\TicketCategoriesController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +50,7 @@ Route::prefix('admin')->name('admin')->group(function () {
         Route::get('/customer_feedback', [CustomerFeedbackController::class, 'index'])->name('.customer_feedback');
         // Merchant
         Route::get('/merchant', [MerchantsController::class, 'adminIndex'])->name('.merchant');
-        Route::get('/merchant_tickets', [MerchantTicketsController::class, 'adminIndex'])->name('.merchant_tickets');
+        // Route::get('/merchant_tickets', [MerchantTicketsController::class, 'adminIndex'])->name('.merchant_tickets');
         Route::get('/facilities', [FacilitiesController::class, 'index'])->name('.facilities');
         // General
         Route::controller(EmployeesController::class)->name(".employee")->group(function () {

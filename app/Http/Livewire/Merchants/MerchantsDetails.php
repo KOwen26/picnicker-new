@@ -18,7 +18,7 @@ class MerchantsDetails extends Component
         $merchant_owner_id, $merchant_owner_gender, $merchant_owner_name, $merchant_owner_phone, $merchant_owner_address, $bank_account_id, $bank_id, $bank_account_name, $bank_account_number,
         $merchant_type_id, $city_id, $merchant_name, $merchant_phone, $merchant_address, $merchant_description, $merchant_open_status = 'OPEN';
     public $merchant_id;
-    public $merchant_pictures, $merchant_open_schedule;
+    public $merchant_pictures, $merchant_schedule;
     public $merchant = [];
 
 
@@ -54,7 +54,7 @@ class MerchantsDetails extends Component
             $this->merchant_address = $merchant->merchant_address;
             $this->merchant_description = $merchant->merchant_description;
             $this->merchant_pictures = $merchant->merchant_pictures;
-            $this->merchant_open_schedule = $merchant->merchant_open_schedule;
+            $this->merchant_schedule = $merchant->merchant_schedule;
             $this->merchant = null;
         }
     }
@@ -78,7 +78,7 @@ class MerchantsDetails extends Component
         $merchant->merchant_address = $this->merchant_address;
         $merchant->merchant_description = $this->merchant_description;
         $merchant->merchant_pictures = null;
-        $merchant->merchant_open_schedule = null;
+        $merchant->merchant_schedule = null;
         $merchant->merchant_open_status = $this->merchant_open_status;
         $merchant->merchant_status = 'REVIEW';
         $merchant->save();

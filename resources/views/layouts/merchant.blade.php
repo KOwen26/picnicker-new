@@ -24,7 +24,7 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
 
         <div class="flex items-start justify-between ">
             <div class="hidden w-40 lg:block lg:w-60 xl:w-[22rem] 2xl:w-[24rem]">
-                <div class="fixed z-40 w-1/5 h-full bg-white shadow-xl ">
+                <div class="fixed z-[21] w-1/5 h-full bg-white shadow-xl ">
                     <div class="flex items-center justify-start py-8 ml-8">
                         <p class="text-xl font-bold">
                             Merchant Picnicker
@@ -35,7 +35,7 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
             </div>
             <div class="flex flex-col w-full md:space-y-4">
                 <livewire:others.navbar :name="$name" :menu_list="$navbar_menu" />
-                <div id="main" class="min-h-screen px-4 pb-8 lg:pr-7 pt-28 ">
+                <div id="main" class="min-h-screen px-4 pb-8 lg:max-w-screen-lg 2xl:max-w-screen-2xl lg:pr-7 pt-28">
                     @yield('content')
                     @isset($slot)
                         {{ $slot }}

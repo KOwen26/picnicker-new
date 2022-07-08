@@ -49,7 +49,7 @@ class RestaurantMerchantsTable extends DataTableComponent
             Column::make("Open Status", "merchant_open_status")
                 ->hideIf(true)->excludeFromColumnSelect(),
             Column::make("Merchant Status", "merchant_status")
-                ->format(fn ($value, $row) => view('components.status-badges', ['value' => $row->merchant_open_status]) . '<span class="mx-1"></span>' . view('components.status-badges', ['value' => $value]))->html()
+                ->format(fn ($value, $row) => view('components.status-badges', ['value' => $row->merchant_open_status, 'type' => 'regular']) . '<span class="mx-1"></span>' . view('components.status-badges', ['value' => $value, 'type' => 'regular']))->html()
                 ->excludeFromColumnSelect(),
             Column::make("Action", "merchant_id")
                 ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Merchant', 'name' => $row->merchant_name, 'update_modal' => 'merchants.merchants-admin-details', 'deleteModel' => 'merchants.merchants-table', 'deleteMethod' => 'merchantDelete']))->excludeFromColumnSelect(),

@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->string('payment_id')->primary();
             $table->string('transaction_id');
-            $table->timestamp('payment_date');
+            $table->dateTime('payment_due_date');
+            $table->dateTime('payment_date')->nullable();
             $table->decimal('payment_total', $precision = 10, $scale = 2)->default(0);
-            $table->jsonb('payment_proof');
+            $table->jsonb('payment_proof')->nullable();
             $table->string('payment_status');
             $table->timestamps();
         });

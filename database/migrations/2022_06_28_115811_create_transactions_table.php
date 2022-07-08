@@ -18,12 +18,13 @@ return new class extends Migration
             $table->string('merchant_id');
             $table->string('customer_id');
             $table->string('transaction_type');
-            $table->timestamp('transaction_date');
-            $table->text('transaction_notes');
+            $table->dateTime('transaction_date');
+            $table->integer('transaction_item_quantity');
             $table->decimal('transaction_total', $precision = 10, $scale = 2)->default(0);
             $table->decimal('transaction_tax', $precision = 10, $scale = 2)->default(0);
             $table->decimal('transaction_discount', $precision = 10, $scale = 2)->default(0);
             $table->decimal('transaction_grand_total', $precision = 10, $scale = 2)->default(0);
+            $table->text('transaction_notes')->nullable();
             $table->string('transaction_status');
             $table->timestamps();
         });

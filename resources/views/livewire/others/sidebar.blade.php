@@ -1,27 +1,6 @@
 @php
-// $group_list = collect(['general', 'customer', 'merchant', 'report', 'picnicker', 'others']);
-// $menu_list = collect([
-//     ['title' => 'Home', 'index' => '0', 'type' => 'general', 'icon' => 'fas fa-house', 'route' => 'admin.home'],
-//     ['title' => 'Transactions', 'index' => '0', 'type' => 'general', 'icon' => 'fas fa-book', 'route' => 'admin.employee'],
-//     ['title' => 'Payments', 'index' => '0', 'type' => 'general', 'icon' => 'fas fa-dollar', 'route' => 'admin.employee'],
-//     ['title' => 'Reports', 'index' => '0', 'type' => 'report', 'icon' => 'fas fa-file-invoice', 'route' => 'admin.employee'],
-//     ['title' => 'Customers', 'index' => '0', 'type' => 'customer', 'icon' => 'fas fa-user', 'route' => 'admin.customer'],
-//     ['title' => 'Customer Feedback', 'index' => '0', 'type' => 'customer', 'icon' => 'fas fa-face-smile', 'route' => 'admin.customer_feedback'],
-//     ['title' => 'Merchants', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-store', 'route' => 'admin.merchant'],
-//     ['title' => 'Merchant Tickets', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-ticket', 'route' => 'admin.merchant_tickets'],
-//     ['title' => 'Categories', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-cubes-stacked', 'route' => 'admin.employee'],
-//     ['title' => 'Facilities', 'index' => '0', 'type' => 'merchant', 'icon' => 'fas fa-list-check', 'route' => 'admin.facilities'],
-//     ['title' => 'Employees', 'index' => '0', 'type' => 'picnicker', 'icon' => 'fas fa-users', 'route' => 'admin.employee'],
-//     ['title' => 'Banks', 'index' => '0', 'type' => 'others', 'icon' => 'fas fa-bank', 'route' => 'admin.banks'],
-//     ['title' => 'Cities', 'index' => '0', 'type' => 'others', 'icon' => 'fas fa-building', 'route' => 'admin.cities'],
-// ]);
-// $route = url()->current();
-// $route = route('admin.home');
 $route = Route::currentRouteName();
 @endphp
-
-{{-- {{ dd($group_list) }} --}}
-
 <div id="sidebar">
     <nav class="mt-6">
         <div class="">

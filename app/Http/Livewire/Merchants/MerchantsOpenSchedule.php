@@ -55,15 +55,15 @@ class MerchantsOpenSchedule extends Component
         return  $array_of_time;
     }
 
-    public function mount($merchant_open_schedule = null)
+    public function mount($merchant_schedule = null)
     {
-        // $this->merchant = $merchant_open_schedule;
+        // $this->merchant = $merchant_schedule;
         $this->dates = $this->dates;
         $this->times = $this->setTime();
-        if ($merchant_open_schedule) {
-            // dd(array(collect(json_decode($merchant_open_schedule, true))->where('open_time', '!=', null)->implode('schedule_id')));
-            $this->selected_dates = explode(',', collect(json_decode($merchant_open_schedule, true))->where('open_time', '!=', null)->implode('schedule_id', ','));
-            $this->merchant_schedule = json_decode($merchant_open_schedule, true);
+        if ($merchant_schedule) {
+            // dd(array(collect(json_decode($merchant_schedule, true))->where('open_time', '!=', null)->implode('schedule_id')));
+            $this->selected_dates = explode(',', collect(json_decode($merchant_schedule, true))->where('open_time', '!=', null)->implode('schedule_id', ','));
+            $this->merchant_schedule = json_decode($merchant_schedule, true);
         }
     }
 
@@ -87,7 +87,7 @@ class MerchantsOpenSchedule extends Component
     public function addMerchantSchedule($merchant_id = null)
     {
         $merchant = Merchants::find($merchant_id);
-        $merchant->merchant_open_schedule = $this->merchant_schedule;
+        $merchant->merchant_schedule = $this->merchant_schedule;
         $merchant->save();
         $this->emitTo('merchants.merchants-facilities', 'addMerchantFacilities', $merchant_id);
     }
