@@ -54,13 +54,13 @@ class FacilitiesDetails extends ModalComponent
 
     public function update()
     {
-        // dd($this->facility, $this->facility_status, $this->facility->facility_status !== true ? 'DISABLED' : 'ACTIVE');
+        // dd($this->facility, $this->facility_status, $this->facility_status != true ? 'DISABLED' : 'ACTIVE');
         $facility = Facilities::find($this->facility_id);
         $facility->facility_name = $this->facility_name;
         $facility->merchant_type_id = $this->merchant_type_id;
         $facility->facility_icon = $this->facility_icon ?? null;
         $facility->facility_description = $this->facility_description ?? null;
-        $facility->facility_status = $this->facility->facility_status !== true ? 'DISABLED' : 'ACTIVE';
+        $facility->facility_status = $this->facility_status !== true ? 'DISABLED' : 'ACTIVE';
         $facility->save();
 
         $this->resetInput();
