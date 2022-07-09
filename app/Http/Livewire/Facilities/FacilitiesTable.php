@@ -48,12 +48,15 @@ class FacilitiesTable extends DataTableComponent
             //     ->sortable(),
             Column::make("Facility Name", "facility_name")
                 ->sortable()->searchable(),
-            Column::make("Facility Type", "facility_type")
+            Column::make("Merchant Type", "MerchantType.merchant_type_name")
                 ->sortable()->searchable(),
             // Column::make("Facility Icon", "facility_icon")
             //     ->sortable(),
             Column::make("Facility Description", "facility_description")
                 ->sortable()->searchable(),
+            Column::make("Status", "facility_status")
+                ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
+                ->sortable()->excludeFromColumnSelect(),
             Column::make("Action", "facility_id")
                 ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Fasilitas', 'name' => $row->facility_name, 'update_modal' => 'facilities.facilities-details', 'deleteModel' => 'facilities.facilities-table', 'deleteMethod' => 'facilityDelete']))->excludeFromColumnSelect(),
             // Column::make("Created at", "created_at")

@@ -23,23 +23,22 @@
                 <span class="text-sm text-gray-700 ">Tipe Fasilitas</span>
                 <br>
                 <div class="flex flex-row gap-3 mt-1">
-                    <div class="">
-                        <input type="radio" class="mx-1" wire:model="facility_type" name="facility_type"
-                            id="facility_type" value="RESTAURANT" @checked(old('facility_type', $facility['facility_type']))>
-                        <label for="facility_type">Restaurant</label>
-                    </div>
-                    <div>
-                        <input type="radio" class="mx-1" wire:model="facility_type" name="facility_type"
-                            id="facility_type" value="TOURISM_VILLAGE" @checked(old('facility_type', $facility['facility_type']))>
-                        <label for="facility_type">Tour Village</label>
-                    </div>
+                    @foreach ($merchant_types as $merchant_type)
+                        <div class="">
+                            <input type="radio" class="mx-1" wire:model="merchant_type_id" id="merchant_type_id"
+                                value="{{ $merchant_type->merchant_type_id }}">
+                            <label for="merchant_type_id">
+                                {{ Str::title($merchant_type->merchant_type_name) }}
+                            </label>
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
             <div>
                 <label for="facility_name" class="text-sm text-gray-700">Nama Fasilitas</label>
                 <input type="text" class="w-full mt-1 rounded-md" wire:model="facility_name" name="facility_name"
-                    id="facility_name" value="{{ $facility ? $facility['facility_name'] : null }}"
-                    placeholder="John Doe" required>
+                    id="facility_name" value="" placeholder="John Doe" required>
                 @error('facility_name')
                     <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
                 @enderror
@@ -49,8 +48,17 @@
                 <br>
                 <textarea class="w-full mt-1 rounded-md" wire:model="facility_description" name="facility_description"
                     id="facility_description" cols="10" rows="4">
-                    {{ $facility ? $facility['facility_description'] : null }}
                 </textarea>
+            </div>
+            <div>
+                <label for="status-toggle" class="relative inline-flex items-center mr-5 cursor-pointer">
+                    <input type="checkbox" wire:model.defer="facility_status" class="sr-only peer" id="status-toggle">
+                    <div
+                        class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-success-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-success-900">
+                    </div>
+                    <span class="ml-3 text-sm font-medium text-gray-900 ">Aktif</span>
+                    {{-- {{ var_export($facility_status) }} --}}
+                </label>
             </div>
         </div>
 

@@ -3,12 +3,13 @@
 namespace App\Http\Livewire\Facilities;
 
 use App\Models\Admin\Facilities;
+use App\Models\Merchant\MerchantType;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class FacilitiesDetails extends ModalComponent
 {
-    public $facility, $facility_id, $facility_name, $facility_type, $facility_icon, $facility_description;
+    public $facility, $facility_id, $facility_name, $merchant_type_id, $facility_icon, $facility_description, $facility_status = true;
 
     public function mount($id = null)
     {
@@ -16,9 +17,10 @@ class FacilitiesDetails extends ModalComponent
             $this->facility = Facilities::find($id);
             $this->facility_id = $this->facility->facility_id;
             $this->facility_name = $this->facility->facility_name;
-            $this->facility_type = $this->facility->facility_type;
+            $this->merchant_type_id = $this->facility->merchant_type_id;
             $this->facility_icon = $this->facility->facility_icon;
             $this->facility_description = $this->facility->facility_description;
+            $this->facility_status = $this->facility->facility_status == 'ACTIVE' ? true : false;
         }
     }
 
@@ -26,7 +28,7 @@ class FacilitiesDetails extends ModalComponent
     {
         $this->facility_id = null;
         $this->facility_name = null;
-        $this->facility_type = null;
+        $this->merchant_type_id = null;
         $this->facility_icon = null;
         $this->facility_description = null;
     }
@@ -39,9 +41,10 @@ class FacilitiesDetails extends ModalComponent
     {
         Facilities::create([
             'facility_name' => $this->facility_name,
-            'facility_type' => $this->facility_type,
+            'merchant_type_id' => $this->merchant_type_id,
             'facility_icon' => $this->facility_icon ?? null,
             'facility_description' => $this->facility_description ?? null,
+            'facility_status' => 'ACTIVE'
         ]);
 
         $this->resetInput();
@@ -51,11 +54,13 @@ class FacilitiesDetails extends ModalComponent
 
     public function update()
     {
+        // dd($this->facility, $this->facility_status, $this->facility->facility_status !== true ? 'DISABLED' : 'ACTIVE');
         $facility = Facilities::find($this->facility_id);
         $facility->facility_name = $this->facility_name;
-        $facility->facility_type = $this->facility_type;
+        $facility->merchant_type_id = $this->merchant_type_id;
         $facility->facility_icon = $this->facility_icon ?? null;
         $facility->facility_description = $this->facility_description ?? null;
+        $facility->facility_status = $this->facility->facility_status !== true ? 'DISABLED' : 'ACTIVE';
         $facility->save();
 
         $this->resetInput();
@@ -65,6 +70,6 @@ class FacilitiesDetails extends ModalComponent
 
     public function render()
     {
-        return view('livewire.facilities.facilities-details');
+        return view('livewire.facilities.facilities-details', ['merchant_types' => MerchantType::all()]);
     }
 }
