@@ -2,12 +2,12 @@
 @section('title', 'Home')
 @section('content')
     <div class="px-4 pb-24 md:px-6">
-        <h1 class="text-4xl font-semibold text-gray-800 ">
+        {{-- <h1 class="text-4xl font-semibold text-gray-800 ">
             Good afternoom, Charlie
         </h1>
         <h2 class="text-gray-400 text-md">
             Here&#x27;s what&#x27;s happening with your ambassador account today.
-        </h2>
+        </h2> --}}
         <div class="flex flex-col items-center w-full my-6 space-y-4 md:space-x-4 md:space-y-0 md:flex-row">
             <div class="w-full md:w-6/12">
                 <div class="relative w-full overflow-hidden bg-white shadow-lg">
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center space-x-4">
+        {{-- <div class="flex items-center space-x-4">
             <button
                 class="flex items-center px-4 py-2 text-gray-400 border border-gray-300 rounded-r-full rounded-tl-sm rounded-bl-full text-md">
                 <svg width="20" height="20" fill="currentColor" class="mr-2 text-gray-400" viewBox="0 0 1792 1792"
@@ -93,16 +93,16 @@
             <span class="text-sm text-gray-400">
                 Compared to oct 1- otc 30, 2020
             </span>
-        </div>
+        </div> --}}
         <div class="grid grid-cols-1 gap-4 my-4 md:grid-cols-2 lg:grid-cols-3">
             <div class="w-full">
                 <div class="relative w-full px-4 py-6 bg-white shadow-lg">
                     <p class="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
-                        Project Reffered
+                        Merchant
                     </p>
                     <div class="flex items-end my-6 space-x-2">
                         <p class="text-5xl font-bold text-black">
-                            12
+                            20
                         </p>
                         <span class="flex items-center text-xl font-bold text-green-500">
                             <svg width="20" fill="currentColor" height="20" class="h-3" viewBox="0 0 1792 1792"
@@ -118,7 +118,7 @@
                         <div
                             class="flex items-center justify-between pb-2 mb-2 text-sm border-b border-gray-200 sm:space-x-12">
                             <p>
-                                Unique URL
+                                Merchant Restoran
                             </p>
                             <div class="flex items-end text-xs">
                                 34
@@ -136,7 +136,7 @@
                         <div
                             class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
                             <p>
-                                Embedded form
+                                Merchant Desa Wisata
                             </p>
                             <div class="flex items-end text-xs">
                                 13
@@ -153,7 +153,7 @@
                         </div>
                         <div class="flex items-center justify-between space-x-12 text-sm md:space-x-24">
                             <p>
-                                New visitor
+                                Nonaktif
                             </p>
                             <div class="flex items-end text-xs">
                                 45
@@ -174,7 +174,7 @@
             <div class="w-full">
                 <div class="relative w-full px-4 py-6 bg-white shadow-lg">
                     <p class="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
-                        Project Paid
+                        Customer
                     </p>
                     <div class="flex items-end my-6 space-x-2">
                         <p class="text-5xl font-bold text-black">
@@ -194,7 +194,7 @@
                         <div
                             class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
                             <p>
-                                User paid
+                                Baru
                             </p>
                             <div class="flex items-end text-xs">
                                 21
@@ -212,7 +212,7 @@
                         <div
                             class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
                             <p>
-                                Income
+                                Nonaktif
                             </p>
                             <div class="flex items-end text-xs">
                                 10
@@ -251,7 +251,7 @@
             <div class="w-full">
                 <div class="relative w-full px-4 py-6 bg-white shadow-lg">
                     <p class="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
-                        New features
+                        Transaction
                     </p>
                     <div class="flex items-end my-6 space-x-2">
                         <p class="text-5xl font-bold text-black">
@@ -271,7 +271,7 @@
                         <div
                             class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
                             <p>
-                                Down
+                                Baru
                             </p>
                             <div class="flex items-end text-xs">
                                 34
@@ -290,7 +290,7 @@
                         <div
                             class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
                             <p>
-                                Up
+                                Berjalan
                             </p>
                             <div class="flex items-end text-xs">
                                 13
@@ -307,7 +307,7 @@
                         </div>
                         <div class="flex items-center justify-between space-x-12 text-sm md:space-x-24">
                             <p>
-                                No developed
+                                Selesai
                             </p>
                             <div class="flex items-end text-xs">
                                 45
@@ -315,239 +315,6 @@
                                     <svg width="20" fill="currentColor" height="20"
                                         class="h-3 text-red-500 transform rotate-180" viewBox="0 0 1792 1792"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    41%
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="relative w-full px-4 py-6 bg-white shadow-lg">
-                    <p class="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
-                        Sign in
-                    </p>
-                    <div class="flex items-end my-6 space-x-2">
-                        <p class="text-5xl font-bold text-black">
-                            16
-                        </p>
-                        <span class="flex items-center text-xl font-bold text-red-500">
-                            <svg width="20" fill="currentColor" height="20" class="h-3 transform rotate-180"
-                                viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                </path>
-                            </svg>
-                            14%
-                        </span>
-                    </div>
-                    <div class="">
-                        <div
-                            class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
-                            <p>
-                                Amercia
-                            </p>
-                            <div class="flex items-end text-xs">
-                                43
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20"
-                                        class="h-3 text-red-500 transform rotate-180" viewBox="0 0 1792 1792"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    12%
-                                </span>
-                            </div>
-                        </div>
-                        <div
-                            class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
-                            <p>
-                                Europe
-                            </p>
-                            <div class="flex items-end text-xs">
-                                133
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20" class="h-3 text-green-500"
-                                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    19%
-                                </span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between space-x-12 text-sm md:space-x-24">
-                            <p>
-                                Asia
-                            </p>
-                            <div class="flex items-end text-xs">
-                                23
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20"
-                                        class="h-3 text-red-500 transform rotate-180" viewBox="0 0 1792 1792"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    4%
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="relative w-full px-4 py-6 bg-white shadow-lg">
-                    <p class="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
-                        Sales
-                    </p>
-                    <div class="flex items-end my-6 space-x-2">
-                        <p class="text-5xl font-bold text-black">
-                            9
-                        </p>
-                        <span class="flex items-center text-xl font-bold text-green-500">
-                            <svg width="20" fill="currentColor" height="20" class="h-3" viewBox="0 0 1792 1792"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                </path>
-                            </svg>
-                            34%
-                        </span>
-                    </div>
-                    <div class="">
-                        <div
-                            class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
-                            <p>
-                                Templates
-                            </p>
-                            <div class="flex items-end text-xs">
-                                345
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20"
-                                        class="h-3 text-red-500 transform rotate-180" viewBox="0 0 1792 1792"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    12%
-                                </span>
-                            </div>
-                        </div>
-                        <div
-                            class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
-                            <p>
-                                Components
-                            </p>
-                            <div class="flex items-end text-xs">
-                                139
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20" class="h-3 text-green-500"
-                                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    10%
-                                </span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between space-x-12 text-sm md:space-x-24">
-                            <p>
-                                Icons
-                            </p>
-                            <div class="flex items-end text-xs">
-                                421
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20"
-                                        class="h-3 text-red-500 transform rotate-180" viewBox="0 0 1792 1792"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    4%
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="relative w-full px-4 py-6 bg-white shadow-lg">
-                    <p class="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
-                        Maintenance
-                    </p>
-                    <div class="flex items-end my-6 space-x-2">
-                        <p class="text-5xl font-bold text-black">
-                            15
-                        </p>
-                        <span class="flex items-center text-xl font-bold text-green-500">
-                            <svg width="20" fill="currentColor" height="20" class="h-3" viewBox="0 0 1792 1792"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                </path>
-                            </svg>
-                            34%
-                        </span>
-                    </div>
-                    <div class="">
-                        <div
-                            class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
-                            <p>
-                                Cloud
-                            </p>
-                            <div class="flex items-end text-xs">
-                                123
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20"
-                                        class="h-3 text-red-500 transform rotate-180" viewBox="0 0 1792 1792"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    22%
-                                </span>
-                            </div>
-                        </div>
-                        <div
-                            class="flex items-center justify-between pb-2 mb-2 space-x-12 text-sm border-b border-gray-200 md:space-x-24">
-                            <p>
-                                Infra
-                            </p>
-                            <div class="flex items-end text-xs">
-                                134
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20" class="h-3 text-green-500"
-                                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
-                                        </path>
-                                    </svg>
-                                    9%
-                                </span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between space-x-12 text-sm md:space-x-24">
-                            <p>
-                                Office
-                            </p>
-                            <div class="flex items-end text-xs">
-                                23
-                                <span class="flex items-center">
-                                    <svg width="20" fill="currentColor" height="20" class="h-3 text-green-500"
-                                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M1675 971q0 51-37 90l-75 75q-38 38-91 38-54 0-90-38l-294-293v704q0 52-37.5 84.5t-90.5 32.5h-128q-53 0-90.5-32.5t-37.5-84.5v-704l-294 293q-36 38-90 38t-90-38l-75-75q-38-38-38-90 0-53 38-91l651-651q35-37 90-37 54 0 91 37l651 651q37 39 37 91z">
                                         </path>

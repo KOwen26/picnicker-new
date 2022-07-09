@@ -20,8 +20,7 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
 @extends('layouts.base')
 @section('sides', 'Merchant')
 @section('body')
-    <main class="bg-primary-100 ">
-
+    {{-- <main class="bg-primary-100 ">
         <div class="flex items-start justify-between ">
             <div class="hidden w-40 lg:block lg:w-60 xl:w-[22rem] 2xl:w-[24rem]">
                 <div class="fixed z-[21] w-1/5 h-full bg-white shadow-xl ">
@@ -36,6 +35,26 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
             <div class="flex flex-col w-full md:space-y-4">
                 <livewire:others.navbar :name="$name" :menu_list="$navbar_menu" />
                 <div id="main" class="min-h-screen px-4 pb-8 lg:max-w-screen-lg 2xl:max-w-screen-2xl lg:pr-7 pt-28">
+                    @yield('content')
+                    @isset($slot)
+                        {{ $slot }}
+                    @endisset
+                </div>
+            </div>
+        </div>
+    </main> --}}
+    <main class="w-full min-h-screen text-gray-700 bg-gray-100 " x-data="layout">
+        <livewire:others.navbar :name="$name" :menu_list="$navbar_menu" />
+        <div class="flex pt-20">
+            <!-- aside -->
+            <aside class="absolute z-10 flex flex-col w-full min-h-screen overflow-y-auto bg-white md:z-0 md:fixed md:w-1/5"
+                x-show="asideOpen">
+                <livewire:others.sidebar :group_list="$group_list" :menu_list="$menu_list" />
+            </aside>
+
+            <!-- main content page -->
+            <div class="flex flex-grow w-4/5 p-4 " x-bind:class=" asideOpen ? 'sm:ml-[20%]' : ''">
+                <div id="main" class="min-h-screen pb-8 overflow-auto ">
                     @yield('content')
                     @isset($slot)
                         {{ $slot }}

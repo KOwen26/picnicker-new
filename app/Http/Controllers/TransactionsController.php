@@ -18,6 +18,11 @@ class TransactionsController extends Controller
         return view('pages.customer.transaction');
     }
 
+    public function adminIndex()
+    {
+        return view('pages.admin.transactions');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

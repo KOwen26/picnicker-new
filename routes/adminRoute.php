@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\CitiesController;
 // use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\Admin\FacilitiesController;
+use App\Http\Controllers\TransactionsController;
 // use App\Http\Controllers\Admin\ProvincesController;
 
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,10 @@ Route::prefix('admin')->name('admin')->group(function () {
         // Route::get('/merchant_tickets', [MerchantTicketsController::class, 'adminIndex'])->name('.merchant_tickets');
         Route::get('/facilities', [FacilitiesController::class, 'index'])->name('.facilities');
         // General
+        Route::prefix('/transaction')->controller(TransactionsController::class)->name(".transaction")->group(function () {
+            Route::get('',  'adminIndex');
+        });
+
         Route::controller(EmployeesController::class)->name(".employee")->group(function () {
             Route::get('/employee',  'index');
             // Route::get('/employee/details/{id}',  'edit')->name('.details');
