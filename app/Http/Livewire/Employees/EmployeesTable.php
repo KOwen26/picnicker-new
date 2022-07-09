@@ -54,7 +54,7 @@ class EmployeesTable extends DataTableComponent
             Column::make("Address", "employee_address")
                 ->sortable()->searchable()->collapseOnTablet(),
             Column::make("Status", "employee_status")
-                ->format(fn ($value) => view('components.status-badges', ['value' => $value]))
+                ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
                 ->sortable()->excludeFromColumnSelect(),
             Column::make("Action", "employee_id")
                 ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Karyawan', 'name' => $row->employee_name, 'update_modal' => 'employees.employees-details', 'deleteModel' => 'employees.employees-table', 'deleteMethod' => 'employeeDelete']))->excludeFromColumnSelect(),

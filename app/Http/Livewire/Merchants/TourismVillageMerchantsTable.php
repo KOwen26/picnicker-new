@@ -47,10 +47,10 @@ class TourismVillageMerchantsTable extends DataTableComponent
             Column::make("Join Date", "created_at")
                 ->sortable(),
             Column::make("Open Status", "merchant_open_status")
-                ->format(fn ($value) => view('components.status-badges', ['value' => $value]))
+                ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
                 ->sortable()->excludeFromColumnSelect(),
             Column::make("Merchant Status", "merchant_status")
-                ->format(fn ($value) => view('components.status-badges', ['value' => $value]))
+                ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
                 ->sortable()->excludeFromColumnSelect(),
             Column::make("Action", "merchant_id")
                 ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Merchant', 'name' => $row->merchant_name, 'update_modal' => 'merchants.merchants-details', 'deleteModel' => 'merchants.merchants-table', 'deleteMethod' => 'merchantDelete']))->excludeFromColumnSelect(),
