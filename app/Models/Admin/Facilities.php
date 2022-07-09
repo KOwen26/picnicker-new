@@ -11,7 +11,7 @@ class Facilities extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['facility_name', 'facility_type', 'facility_icon', 'facility_description'];
+    protected $fillable = ['facility_name', 'merchant_type_id', 'facility_icon', 'facility_description'];
     /**
      * The table associated with the model.
      *
