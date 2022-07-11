@@ -136,22 +136,24 @@ $merchant = null;
                     <hr>
                     <h4 class="mt-6 text-xl font-medium" id="merchant">Data Merchant</h4>
                     <div class="grid grid-cols-1 gap-5 py-6 md:grid-cols-3 ">
-                        <div>
-                            <span class="text-sm text-gray-700 ">Tipe Merchant</span>
-                            <br>
-                            <div class="flex flex-row gap-3 mt-1">
-                                @forelse ($merchant_type as $type)
-                                    <div>
-                                        <input type="radio" class="mx-1" wire:model="merchant_type_id"
-                                            name="merchant_type_id" id="merchant_type_id{{ $loop->iteration }}"
-                                            value="{{ $type->merchant_type_id }}" required>
-                                        <label
-                                            for="merchant_type_id{{ $loop->iteration }}">{{ Str::title($type->merchant_type_name) }}</label>
-                                    </div>
-                                @empty
-                                @endforelse
+                        @if (!$merchant_type_id)
+                            <div>
+                                <span class="text-sm text-gray-700 ">Tipe Merchant</span>
+                                <br>
+                                <div class="flex flex-row gap-3 mt-1">
+                                    @forelse ($merchant_type as $type)
+                                        <div>
+                                            <input type="radio" class="mx-1" wire:model="merchant_type_id"
+                                                name="merchant_type_id" id="merchant_type_id{{ $loop->iteration }}"
+                                                value="{{ $type->merchant_type_id }}" required>
+                                            <label
+                                                for="merchant_type_id{{ $loop->iteration }}">{{ Str::title($type->merchant_type_name) }}</label>
+                                        </div>
+                                    @empty
+                                    @endforelse
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div>
                             <label for="" class="text-sm text-gray-700">Nama Kota</label>
                             <select wire:model="city_id" class="w-full mt-1 rounded-md ">
