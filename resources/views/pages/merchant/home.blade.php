@@ -1,6 +1,6 @@
 @extends('layouts.merchant')
 @section('content')
-    <div class="px-4 pb-24 md:px-6">
+    <div class="px-4 md:px-6">
         <h1 class="text-4xl font-semibold text-gray-800 ">
             {{ 'Hai, ' .auth()->guard('merchant')->user()?->Merchants()?->first()?->merchant_name }}
         </h1>

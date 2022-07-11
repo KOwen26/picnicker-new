@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\CitiesController;
 // use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\Admin\FacilitiesController;
-use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\Customer\TransactionsController;
 // use App\Http\Controllers\Admin\ProvincesController;
 
 use Illuminate\Support\Facades\Route;

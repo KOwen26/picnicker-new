@@ -9,16 +9,17 @@ $logged_merchant = $logged_user?->Merchants()?->first();
 $merchant_name = $logged_merchant?->merchant_name;
 $merchant_owner_name = $logged_user?->merchant_owner_name;
 $name = $merchant_name ? "$merchant_name, $merchant_owner_name" : $merchant_owner_name;
+// dd($menu_list);
 
-if ($logged_merchant?->merchant_type_id == 2) {
-    $menu_list->push(['title' => 'Tiket Merchant', 'index' => 1, 'type' => 'general', 'icon' => 'fas fa-ticket', 'route' => 'merchant.home']);
+if ($menu_list && $logged_merchant?->merchant_type_id == 2) {
+    $menu_list->push(['title' => 'Tiket Merchant', 'index' => 1, 'type' => 'general', 'icon' => 'fas fa-ticket', 'route' => 'merchant.product']);
 }
 
 $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon' => 'fas fa-arrow-right-from-bracket', 'route' => 'merchant.home', 'component' => 'merchants.merchants-logout']];
 @endphp
-
 @extends('layouts.base')
-@section('sides', 'Merchant')
+@section('title', 'Merchant')
+{{-- @section('sides', 'Merchant') --}}
 @section('body')
     {{-- <main class="bg-primary-100 ">
         <div class="flex items-start justify-between ">
@@ -53,8 +54,8 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
             </aside>
 
             <!-- main content page -->
-            <div class="flex flex-grow w-4/5 p-4 " x-bind:class=" asideOpen ? 'sm:ml-[20%]' : ''">
-                <div id="main" class="min-h-screen pb-8 overflow-auto ">
+            <div class="w-4/5 p-4 " x-bind:class=" asideOpen ? 'sm:ml-[20%]' : ''">
+                <div id="main" class="min-h-screen pb-8 overflow-auto width-full ">
                     @yield('content')
                     @isset($slot)
                         {{ $slot }}

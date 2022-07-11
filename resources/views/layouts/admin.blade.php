@@ -24,7 +24,8 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
 @endphp
 
 @extends('layouts.base')
-@section('sides', 'Admin')
+@section('title', 'Admin')
+{{-- @section('sides', 'Admin') --}}
 @section('body')
     {{-- <main class="bg-primary-100 ">
         <div class="flex items-start justify-between ">
@@ -60,8 +61,8 @@ $navbar_menu = [['title' => 'Logout', 'index' => 0, 'type' => 'secondary', 'icon
             </aside>
 
             <!-- main content page -->
-            <div class="flex flex-grow w-4/5 p-4 " x-bind:class=" asideOpen ? 'sm:ml-[20%]' : ''">
-                <div id="main" class="min-h-screen pb-8 overflow-auto ">
+            <div class="w-4/5 p-4 " x-bind:class=" asideOpen ? 'sm:ml-[20%]' : ''">
+                <div id="main" class="min-h-screen pb-8 overflow-auto width-full ">
                     @yield('content')
                     @isset($slot)
                         {{ $slot }}

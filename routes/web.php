@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\LogoutController;
 // Customer
 use App\Http\Controllers\Customer\CustomersController;
 use App\Http\Controllers\Customer\CustomerFeedbackController;
-use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\Customer\TransactionsController;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;

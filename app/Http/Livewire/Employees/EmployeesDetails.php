@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Employees;
 
 use LivewireUI\Modal\ModalComponent;
 use App\Models\Admin\Employees;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class EmployeesDetails extends ModalComponent
@@ -53,7 +54,7 @@ class EmployeesDetails extends ModalComponent
             'employee_email' => $this->employee_email,
             'employee_phone' => $this->employee_phone,
             'employee_address' => $this->employee_address,
-            'employee_password' => "admin123",
+            'employee_password' => Hash::make("admin123"),
             'employee_status' => "ACTIVE",
         ]);
 

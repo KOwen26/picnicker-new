@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Merchant;
 
-use App\Models\Customer\Transactions;
+use App\Http\Controllers\Controller;
+use App\Models\Merchant\Products;
 use Illuminate\Http\Request;
 
-class TransactionsController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,7 @@ class TransactionsController extends Controller
     public function index()
     {
         //
-        return view('pages.customer.transaction');
-    }
-
-    public function adminIndex()
-    {
-        return view('pages.admin.transactions');
+        return view('pages.merchant.merchant-product');
     }
 
     /**
@@ -47,10 +43,10 @@ class TransactionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Customer\Transactions  $transactions
+     * @param  \App\Models\Merchant\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Transactions $transactions)
+    public function show(Products $products)
     {
         //
     }
@@ -58,10 +54,10 @@ class TransactionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer\Transactions  $transactions
+     * @param  \App\Models\Merchant\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transactions $transactions)
+    public function edit(Products $products)
     {
         //
     }
@@ -70,10 +66,10 @@ class TransactionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer\Transactions  $transactions
+     * @param  \App\Models\Merchant\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transactions $transactions)
+    public function update(Request $request, Products $products)
     {
         //
     }
@@ -81,10 +77,10 @@ class TransactionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer\Transactions  $transactions
+     * @param  \App\Models\Merchant\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transactions $transactions)
+    public function destroy(Products $products)
     {
         //
     }
