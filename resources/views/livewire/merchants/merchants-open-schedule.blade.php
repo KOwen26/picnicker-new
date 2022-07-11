@@ -46,8 +46,8 @@
             </div>
             <div>
                 <span class="block mb-2">Hari, Jam buka-tutup saat ini:</span>
-                @if ($merchant_schedule)
-                    @foreach ($merchant_schedule as $item)
+                @if ($merchant_schedules)
+                    @foreach ($merchant_schedules as $item)
                         <span class="block">
                             {{ collect($dates)->where('id', $item['schedule_id'])->first()['alias'] }},
                             {{ $item['open_time'] }} -

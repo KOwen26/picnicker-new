@@ -128,7 +128,7 @@ class MerchantsDetails extends Component
         return view('livewire.merchants.merchants-details', [
             'merchant_type' => $merchant_type->all(),
             'banks' => $banks->where('bank_status', 'ACTIVE')->orderBy('bank_name', 'asc')->get(),
-            'cities' => $cities->orderBy('city_name', 'asc')->get()
+            'cities' => $cities->where('province_id', '35')->orderBy('city_name', 'asc')->get()
         ]);
     }
 }

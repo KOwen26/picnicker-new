@@ -14,10 +14,10 @@
             </div>
         </div>
         <div class="md:basis-1/2">
-            <button type="button" wire:click="addMerchantFacilities('MRC-220623-1IZW-0001')"
+            {{-- <button type="button" wire:click="addMerchantFacilities('MRC-220711-OFKP-0001')"
                 class="px-4 py-2 bg-info-700"> Tambah
                 Fasilitias
-            </button>
+            </button> --}}
         </div>
     </div>
 </div>

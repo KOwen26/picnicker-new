@@ -11,17 +11,20 @@ class MerchantsFacilities extends Component
 {
     protected $listeners = ['addMerchantFacilities' => 'addMerchantFacilities'];
     public $facility_id = [];
+    public $merchant_id;
 
     public function mount($merchant_id = null)
     {
         if ($merchant_id) {
+            // $this->merchant_id = $merchant_id;
             $merchant_facilities = MerchantFacilities::where('merchant_id', $merchant_id);
             $this->facility_id = Arr::flatten($merchant_facilities->get('facility_id')->toArray());
         }
     }
 
-    public function addMerchantFacilities($merchant_id = null)
+    public function addMerchantFacilities($merchant_id)
     {
+        // dd("Merchant Facilities", $merchant_id);
         $current_merchant_facilities = MerchantFacilities::where('merchant_id', $merchant_id)->get();
         $selected_facilities = Arr::map(Arr::crossJoin([$merchant_id], $this->facility_id), function ($value) {
             return ['merchant_id' => $value[0], 'facility_id' => (int) $value[1]];

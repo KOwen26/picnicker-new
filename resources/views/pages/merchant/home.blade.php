@@ -1,8 +1,12 @@
 @extends('layouts.merchant')
 @section('content')
     <div class="px-4 md:px-6">
-        <h1 class="text-4xl font-semibold text-gray-800 ">
-            {{ 'Hai, ' .auth()->guard('merchant')->user()?->Merchants()?->first()?->merchant_name }}
+        <h1 class="mt-12 text-3xl font-semibold text-gray-800">
+            @if (auth()->guard('merchant')->user()?->Merchants)
+                Hai, Lengkapi data dirimu dulu yuk
+            @else
+                {{ 'Hai, ' .auth()->guard('merchant')->user()?->Merchants()?->first()?->merchant_name }}
+            @endif
         </h1>
         {{-- <h2 class="text-gray-400 text-md">
         </h2> --}}

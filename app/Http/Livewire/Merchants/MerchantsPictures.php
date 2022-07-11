@@ -13,13 +13,13 @@ class MerchantsPictures extends Component
     protected $listeners = ['addMerchantPictures' => 'addMerchantPictures'];
 
     public $pictures = [];
-    public $merchant_pictures = [];
+    public $merchant_picture = [];
 
     public function mount($merchant_pictures = null)
     {
         if ($merchant_pictures) {
             // dd($merchant_pictures);
-            $this->merchant_pictures = json_decode($merchant_pictures, true);
+            $this->merchant_picture = json_decode($merchant_pictures, true);
         }
     }
 
@@ -34,14 +34,14 @@ class MerchantsPictures extends Component
             $picture_filename = "$picture_name.$picture_ext";
             $storage_location = "public\pictures\\$merchant_id";
             $this->pictures[$i]->storeAs($storage_location, $picture_filename);
-            $this->merchant_pictures[$i]['picture_id'] = $i + 1;
-            $this->merchant_pictures[$i]['picture_filename'] = $picture_filename;
-            $this->merchant_pictures[$i]['picture_location'] = $storage_location;
+            $this->merchant_picture[$i]['picture_id'] = $i + 1;
+            $this->merchant_picture[$i]['picture_filename'] = $picture_filename;
+            $this->merchant_picture[$i]['picture_location'] = $storage_location;
         }
-        // dd($this->pictures, $this->merchant_pictures);
-        if (count($this->merchant_pictures) > 0) {
+        // dd($this->pictures, $this->merchant_picture);
+        if (count($this->merchant_picture) > 0) {
             $merchant = Merchants::find($merchant_id);
-            $merchant->merchant_pictures = $this->merchant_pictures;
+            $merchant->merchant_pictures = $this->merchant_picture;
             $merchant->save();
         }
         // session()->flash('message', 'pictures has been successfully Uploaded.');

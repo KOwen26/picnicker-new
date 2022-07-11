@@ -2,8 +2,8 @@
     {{-- {{ dd($merchant_pictures) }} --}}
     <label class="block mb-2 text-sm font-medium text-gray-900 " for="multiple_files">Foto merchant saat ini</label>
     <div class="grid grid-flow-row grid-cols-6 mb-6">
-        @if ($merchant_pictures)
-            @forelse ($merchant_pictures as $picture)
+        @if ($merchant_picture)
+            @forelse ($merchant_picture as $picture)
                 <div class="w-36">
                     <img class="object-cover w-full"
                         src="{{ asset(Str::replace('public', 'storage', $picture['picture_location']) . '\\' . $picture['picture_filename']) }}"

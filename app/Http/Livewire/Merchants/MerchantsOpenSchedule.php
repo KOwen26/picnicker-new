@@ -10,7 +10,6 @@ class MerchantsOpenSchedule extends Component
     // public Merchants $merchant;
 
     protected $listeners = ['addMerchantSchedule' => 'addMerchantSchedule'];
-    public $merchant;
     public $dates = [
         ['id' => 'monday', 'alias' => 'Senin', 'status' => 'active'],
         ['id' => 'tuesday', 'alias' => 'Selasa', 'status' => 'active'],
@@ -24,7 +23,7 @@ class MerchantsOpenSchedule extends Component
     public $selected_dates = [];
     public $open_time;
     public $close_time;
-    public $merchant_schedule = [
+    public $merchant_schedules = [
         ['schedule_id' => 'monday', 'open_time' => null, 'close_time' => null],
         ['schedule_id' => 'tuesday', 'open_time' => null, 'close_time' => null],
         ['schedule_id' => 'wednesday', 'open_time' => null, 'close_time' => null],
@@ -57,23 +56,23 @@ class MerchantsOpenSchedule extends Component
 
     public function mount($merchant_schedule = null)
     {
-        // $this->merchant = $merchant_schedule;
         $this->dates = $this->dates;
         $this->times = $this->setTime();
         if ($merchant_schedule) {
             // dd(array(collect(json_decode($merchant_schedule, true))->where('open_time', '!=', null)->implode('schedule_id')));
             $this->selected_dates = explode(',', collect(json_decode($merchant_schedule, true))->where('open_time', '!=', null)->implode('schedule_id', ','));
-            $this->merchant_schedule = json_decode($merchant_schedule, true);
+            $this->merchant_schedules = json_decode($merchant_schedule, true);
         }
     }
 
     public function setMerchantSchedule()
     {
+        // dd($this);
         foreach ($this->selected_dates as $date) {
-            for ($i = 0; $i < count($this->merchant_schedule); $i++) {
-                if ($date == $this->merchant_schedule[$i]['schedule_id']) {
-                    $this->merchant_schedule[$i]['open_time'] = $this->open_time;
-                    $this->merchant_schedule[$i]['close_time'] = $this->close_time;
+            for ($i = 0; $i < count($this->merchant_schedules); $i++) {
+                if ($date == $this->merchant_schedules[$i]['schedule_id']) {
+                    $this->merchant_schedules[$i]['open_time'] = $this->open_time;
+                    $this->merchant_schedules[$i]['close_time'] = $this->close_time;
                 }
             }
             // for ($i = 0; $i < count($this->dates); $i++) {
@@ -87,8 +86,9 @@ class MerchantsOpenSchedule extends Component
     public function addMerchantSchedule($merchant_id = null)
     {
         $merchant = Merchants::find($merchant_id);
-        $merchant->merchant_schedule = $this->merchant_schedule;
+        $merchant->merchant_schedule = $this->merchant_schedules;
         $merchant->save();
+        // dd("Merchant Schedule", $merchant_id);
         $this->emitTo('merchants.merchants-facilities', 'addMerchantFacilities', $merchant_id);
     }
 

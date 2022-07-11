@@ -1178,6 +1178,9 @@ input:invalid, textarea:invalid, select:invalid {
 .mb-0 {
   margin-bottom: 0px;
 }
+.mt-12 {
+  margin-top: 3rem;
+}
 .block {
   display: block;
 }
