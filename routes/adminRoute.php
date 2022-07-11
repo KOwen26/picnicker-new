@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\CitiesController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\Admin\FacilitiesController;
 use App\Http\Controllers\Customer\TransactionsController;
+use App\Http\Controllers\Merchant\ProductCategoriesController;
 // use App\Http\Controllers\Admin\ProvincesController;
 
 use Illuminate\Support\Facades\Route;
@@ -48,11 +49,12 @@ Route::prefix('admin')->name('admin')->group(function () {
         Route::view('/', 'pages.admin.home')->name('.home');
         // Customer
         Route::get('/customer', [CustomersController::class, 'adminIndex'])->name('.customer');
-        Route::get('/customer_feedback', [CustomerFeedbackController::class, 'index'])->name('.customer_feedback');
+        Route::get('/customer-feedback', [CustomerFeedbackController::class, 'index'])->name('.customer_feedback');
         // Merchant
         Route::get('/merchant', [MerchantsController::class, 'adminIndex'])->name('.merchant');
         // Route::get('/merchant_tickets', [MerchantTicketsController::class, 'adminIndex'])->name('.merchant_tickets');
         Route::get('/facilities', [FacilitiesController::class, 'index'])->name('.facilities');
+        Route::get('/product-categories', [ProductCategoriesController::class, 'adminIndex'])->name('.product-categories');
         // General
         Route::prefix('/transaction')->controller(TransactionsController::class)->name(".transaction")->group(function () {
             Route::get('',  'adminIndex');

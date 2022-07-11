@@ -15,7 +15,7 @@
     <div class="p-5">
         <div class="">
             <div>
-                Apakah anda yakin ingin menghapus <span class="font-bold">{{ $title }}
+                Apakah anda yakin ingin menghapus <span class="font-bold">{{ $title }} -
                     {{ $name }}</span>
             </div>
         </div>

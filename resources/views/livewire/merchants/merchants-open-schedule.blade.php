@@ -6,11 +6,11 @@
                 <label for="" class="text-sm text-gray-700">Hari</label>
                 @forelse ($dates as $date)
                     <div class="flex items-center mx-2 my-4">
-                        <input id="default-checkbox" wire:model.defer="selected_dates" type="checkbox"
-                            value="{{ $date['id'] }}"
+                        <input id="default-checkbox{{ $loop->iteration }}" wire:model.defer="selected_dates"
+                            type="checkbox" value="{{ $date['id'] }}"
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
                             @if ($date['status'] == 'disabled') readonly disabled @endif>
-                        <label for="default-checkbox"
+                        <label for="default-checkbox{{ $loop->iteration }}"
                             class="ml-2 text-sm font-medium text-gray-900 ">{{ $date['alias'] }}</label>
                     </div>
                 @empty

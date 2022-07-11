@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Merchant;
 
+use App\Http\Controllers\Controller;
 use App\Models\Merchant\ProductCategories;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,12 @@ class ProductCategoriesController extends Controller
     public function index()
     {
         //
+    }
+
+    public function adminIndex()
+    {
+        //
+        return view('pages.admin.product-categories');
     }
 
     /**

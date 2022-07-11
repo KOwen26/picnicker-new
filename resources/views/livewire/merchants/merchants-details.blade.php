@@ -63,13 +63,15 @@ $merchant = null;
                             <div class="flex flex-row gap-3 mt-1">
                                 <div>
                                     <input type="radio" class="mx-1" wire:model="merchant_owner_gender"
-                                        name="merchant_owner_gender" id="merchant_owner_gender" value="L" required>
-                                    <label for="merchant_owner_gender">Laki-laki</label>
+                                        name="merchant_owner_gender" id="merchant_owner_gender_l" value="L"
+                                        required>
+                                    <label for="merchant_owner_gender_l">Laki-laki</label>
                                 </div>
                                 <div>
                                     <input type="radio" class="mx-1" wire:model="merchant_owner_gender"
-                                        name="merchant_owner_gender" id="merchant_owner_gender" value="P" required>
-                                    <label for="merchant_owner_gender">Perempuan</label>
+                                        name="merchant_owner_gender" id="merchant_owner_gender_p" value="P"
+                                        required>
+                                    <label for="merchant_owner_gender_p">Perempuan</label>
                                 </div>
                             </div>
                         </div>
@@ -141,10 +143,10 @@ $merchant = null;
                                 @forelse ($merchant_type as $type)
                                     <div>
                                         <input type="radio" class="mx-1" wire:model="merchant_type_id"
-                                            name="merchant_type_id" id="merchant_type_id"
+                                            name="merchant_type_id" id="merchant_type_id{{ $loop->iteration }}"
                                             value="{{ $type->merchant_type_id }}" required>
                                         <label
-                                            for="merchant_type_id">{{ Str::title($type->merchant_type_name) }}</label>
+                                            for="merchant_type_id{{ $loop->iteration }}">{{ Str::title($type->merchant_type_name) }}</label>
                                     </div>
                                 @empty
                                 @endforelse
