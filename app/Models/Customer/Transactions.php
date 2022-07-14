@@ -50,7 +50,7 @@ class Transactions extends Model
         $month = date("m");
         $day = date("d");
         $index = "0001";
-        $unique = Str::upper(Str::random(4));
+        $unique = Str::upper(Str::random(6));
         $prefix = "INV-$year$month$day";
         $lastId = $this->where('transaction_id', 'like', "$prefix%")->max('transaction_id');
         if ($lastId) {

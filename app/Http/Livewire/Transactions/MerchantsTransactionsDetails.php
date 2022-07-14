@@ -30,9 +30,19 @@ class MerchantsTransactionsDetails extends ModalComponent
         }
     }
 
-    public function accept()
+    public function process()
     {
-        $this->transaction->transaction_status = 'VERIFIED';
+        if ($this->transaction->transaction_status == 'NEW') {
+            $this->transaction->transaction_status = 'VERIFIED';
+        } elseif ($this->transaction->transaction_status == 'VERIFIED') {
+            $this->transaction->transaction_status = 'FINISHED';
+        }
+        $this->transaction->save();
+        return $this->emit('refreshComponent');
+    }
+
+    public function arrived()
+    {
         $this->transaction->save();
         return $this->emit('refreshComponent');
     }

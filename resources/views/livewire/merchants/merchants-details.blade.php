@@ -190,6 +190,15 @@ $merchant = null;
                                 <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div>
+                            <label for="merchant_address" class="text-sm text-gray-700">Koordinat</label>
+                            <input type="text" class="w-full mt-1 rounded-md" onclick="getLocation()"
+                                wire:model="merchant_address" name="merchant_address" id="merchant_address"
+                                value="" placeholder="John Doe" required>
+                            @error('merchant_address')
+                                <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="">
                             <label for="merchant_description" class="text-sm text-gray-700">Deskripsi Merchant</label>
                             <br>
@@ -237,5 +246,14 @@ $merchant = null;
             </form>
         </div>
     </div>
-
+    <script>
+        function getLocation() {
+            navigator.geolocation.getCurrentPosition((location) => {
+                console.log(location);
+                console.log(location.coords.latitude);
+                console.log(location.coords.longitude);
+                console.log(location.coords.accuracy);
+            });
+        }
+    </script>
 </div>

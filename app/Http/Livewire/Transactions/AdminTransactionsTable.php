@@ -22,6 +22,7 @@ class AdminTransactionsTable extends DataTableComponent
     {
         return [
             Column::make("Kode Reservasi", "transaction_id")->sortable()->searchable(),
+            Column::make("Kode Reservasi", "transaction_id")->sortable()->searchable(),
             Column::make("Nama Merchant", "merchant.merchant_name")->sortable()->searchable(),
             Column::make("Nama Pelanggan", "customer.customer_name")->sortable()->searchable(),
             Column::make("Kontak Pelanggan", "customer.customer_phone")->sortable()->searchable(),

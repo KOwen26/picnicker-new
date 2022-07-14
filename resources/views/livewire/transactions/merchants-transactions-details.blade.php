@@ -99,7 +99,7 @@
                             Nama Pemesan
                         </label>
                         <p class="font-medium">
-                            {{ Str::title(auth()->guard('customer')->user()->customer_name) }}
+                            {{ Str::title($transaction->Customer->customer_name) }}
                         </p>
                     </div>
                     <div class="">
@@ -107,7 +107,7 @@
                             Kontak Pemesan
                         </label>
                         <p class="font-medium">
-                            {{ auth()?->guard('customer')?->user()?->customer_phone ?:'-' }}
+                            {{ $transaction->Customer?->customer_phone ?: '-' }}
                         </p>
                     </div>
                 </div>
@@ -127,7 +127,12 @@
                 </div>
             </div> --}}
         </div>
-        <button type="button" wire:click="accept"
-            class="w-full px-8 py-3 my-4 text-white rounded-xl bg-success-700">Terima Reservasi</button>
+        <button type="button" wire:click="process" class="w-full px-8 py-3 my-4 text-white rounded-xl bg-success-700">
+            @if ($transaction->transaction_status == 'NEW')
+                Terima Reservasi
+            @elseif($transaction->transaction_status == 'VERIFIED')
+                Pelanggan Sudah Datang
+            @endif
+        </button>
     </div>
 </div>

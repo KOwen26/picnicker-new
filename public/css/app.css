@@ -1160,6 +1160,9 @@ input:invalid, textarea:invalid, select:invalid {
 .-mb-px {
   margin-bottom: -1px;
 }
+.mt-12 {
+  margin-top: 3rem;
+}
 .-ml-px {
   margin-left: -1px;
 }
@@ -1177,9 +1180,6 @@ input:invalid, textarea:invalid, select:invalid {
 }
 .mb-0 {
   margin-bottom: 0px;
-}
-.mt-12 {
-  margin-top: 3rem;
 }
 .block {
   display: block;

@@ -85,6 +85,11 @@ class Merchants extends Model
         return $this->hasMany(BankAccounts::class, $this->primaryKey, $this->primaryKey);
     }
 
+    public function Products()
+    {
+        return $this->hasMany(Products::class, $this->primaryKey, $this->primaryKey);
+    }
+
     public function MerchantFacilities()
     {
         return $this->hasMany(MerchantFacilities::class, $this->primaryKey, $this->primaryKey);
