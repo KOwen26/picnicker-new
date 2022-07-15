@@ -1241,6 +1241,9 @@ input:invalid, textarea:invalid, select:invalid {
 .h-8 {
   height: 2rem;
 }
+.\!h-10 {
+  height: 2.5rem !important;
+}
 .h-14 {
   height: 3.5rem;
 }

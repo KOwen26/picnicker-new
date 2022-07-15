@@ -5,6 +5,19 @@ if ($merchant_id) {
 }
 $merchant = null;
 @endphp
+<style>
+    .select2-container {
+        width: 100%;
+    }
+
+    .select2-container .select2-selection--single {
+        height: 100%;
+    }
+
+    .select2-selection__rendered {
+        padding: 8px 0
+    }
+</style>
 <div class="">
     <div class="flex">
         <div class="hidden md:flex basis-1/5">
@@ -156,12 +169,22 @@ $merchant = null;
                         @endif
                         <div>
                             <label for="" class="text-sm text-gray-700">Nama Kota</label>
-                            <select wire:model="city_id" class="w-full mt-1 rounded-md ">
+                            {{-- <select wire:model="city_id" class="w-full mt-1 rounded-md ">
                                 <option>Pilih kota</option>
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
+                            <div wire:ignore class="mt-1">
+                                <select class="w-full !h-10 rounded-md" id="city-dropdown">
+                                    <option value="">Select Option</option>
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->city_id }}">
+                                            {{ Str::title($city->city_name . ', ' . $city->provinces->province_name) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div>
                             <label for="merchant_name" class="text-sm text-gray-700">Nama Merchant</label>
@@ -182,6 +205,22 @@ $merchant = null;
                             @enderror
                         </div>
                         <div>
+                            <label for="merchant_address" class="text-sm text-gray-700">Koordinat</label>
+                            <input type="text" class="w-full mt-1 rounded-md" wire:model="keyword"
+                                wire:change.lazy="search_location" name="merchant_address" id="merchant_address"
+                                value="" placeholder="John Doe" required>
+                            @error('merchant_address')
+                                <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
+                            @enderror
+                            <span onclick="getLocation()">Gunakan lokasi saat ini</span>
+                            <span>Latitude: {{ $latitude ?: '-' }}, Longitude: {{ $longitude ?: '-' }}</span>
+
+                            {{-- <div wire:ignore>
+                                <select class="w-full mt-1 rounded-md location-dropdown" id="">
+                                </select>
+                            </div> --}}
+                        </div>
+                        <div>
                             <label for="merchant_address" class="text-sm text-gray-700">Alamat Merchant</label>
                             <input type="text" class="w-full mt-1 rounded-md" wire:model="merchant_address"
                                 name="merchant_address" id="merchant_address" value="" placeholder="John Doe"
@@ -190,15 +229,7 @@ $merchant = null;
                                 <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div>
-                            <label for="merchant_address" class="text-sm text-gray-700">Koordinat</label>
-                            <input type="text" class="w-full mt-1 rounded-md" onclick="getLocation()"
-                                wire:model="merchant_address" name="merchant_address" id="merchant_address"
-                                value="" placeholder="John Doe" required>
-                            @error('merchant_address')
-                                <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
-                            @enderror
-                        </div>
+
                         <div class="">
                             <label for="merchant_description" class="text-sm text-gray-700">Deskripsi Merchant</label>
                             <br>
@@ -247,12 +278,89 @@ $merchant = null;
         </div>
     </div>
     <script>
+        $(document).ready(function() {
+            $('#city-dropdown').select2({
+                height: 'resolve',
+            });
+            $('#city-dropdown').on('change', function(e) {
+                var data = $('#city-dropdown').select2("val");
+                @this.set('city_id', data);
+            });
+
+            // $(".location-dropdown").select2({
+            //     ajax: {
+            //         url: "https://geocode.maps.co/search?q=",
+            //         dataType: 'json',
+            //         delay: 250,
+            //         data: function(params) {
+            //             return {
+            //                 q: params.term, // search term
+            //                 page: params.page
+            //             };
+            //         },
+            //         processResults: function(data, params) {
+            //             // parse the results into the format expected by Select2
+            //             // since we are using custom formatting functions we do not need to
+            //             // alter the remote JSON data, except to indicate that infinite
+            //             // scrolling can be used
+            //             // console.log(data, data.length, params)
+            //             params.page = params.page || 1;
+
+            //             return {
+            //                 results: data,
+            //                 pagination: {
+            //                     more: (params.page * 30) < data.length
+            //                 }
+            //             };
+            //         },
+            //         cache: true
+            //     },
+            //     placeholder: 'Cari Restomu',
+            //     minimumInputLength: 3,
+            //     templateResult: formatMerchant,
+            //     templateSelection: formatMerchantSelection
+            // });
+
+            // // function currentCoords(latitude, longitude) {
+            // //     console.log(latitude, longitude);
+            // // }
+
+            // function formatMerchant(merchant) {
+            //     console.log(merchant)
+            //     if (merchant.loading) {
+            //         return merchant.text;
+            //     }
+
+            //     var $container = $(
+            //         "<div class='clearfix select2-result'>" +
+            //         "<div class='select2-result__meta'>" +
+            //         "<div class='select2-result__title' onclick='console.log(" + merchant.lat + ',' +
+            //         merchant.lon + ")'></div>" +
+            //         // "<div class='select2-result__description'></div>" +
+            //         "</div>" +
+            //         "</div>"
+            //     );
+
+            //     $container.find(".select2-result__title").text(merchant.display_name);
+            //     // $container.find(".select2-result__description").text(merchant?.description || '-');
+
+            //     return $container;
+            // }
+
+            // function formatMerchantSelection(merchant) {
+            //     console.log("format merchant", merchant);
+            //     return merchant.display_name;
+            // }
+        });
+
         function getLocation() {
             navigator.geolocation.getCurrentPosition((location) => {
-                console.log(location);
+                // console.log(location);
+                @this.set('latitude', location.coords.latitude);
+                @this.set('longitude', location.coords.longitude);
                 console.log(location.coords.latitude);
                 console.log(location.coords.longitude);
-                console.log(location.coords.accuracy);
+                // console.log(location.coords.accuracy);
             });
         }
     </script>

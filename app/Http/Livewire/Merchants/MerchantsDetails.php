@@ -9,6 +9,7 @@ use App\Models\Merchant\MerchantFacilities;
 use App\Models\Merchant\MerchantOwner;
 use App\Models\Merchant\Merchants;
 use App\Models\Merchant\MerchantType;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class MerchantsDetails extends Component
@@ -17,6 +18,7 @@ class MerchantsDetails extends Component
     public
         $merchant_owner_id, $merchant_owner_gender, $merchant_owner_name, $merchant_owner_phone, $merchant_owner_address, $bank_account_id, $bank_id, $bank_account_name, $bank_account_number,
         $merchant_type_id, $city_id, $merchant_name, $merchant_phone, $merchant_address, $merchant_description, $merchant_open_status = 'OPEN';
+    public $keyword, $latitude, $longitude;
     public $merchant_id;
     public $merchant_pictures, $merchant_schedule;
     public $merchant = [];
@@ -57,6 +59,12 @@ class MerchantsDetails extends Component
             $this->merchant_schedule = $merchant->merchant_schedule;
             $this->merchant = null;
         }
+    }
+
+    public function search_location()
+    {
+        $response = Http::get('https://geocode.maps.co/search?q=' . parse_url($this->keyword));
+        return dd($response->collect());
     }
 
     public function store()

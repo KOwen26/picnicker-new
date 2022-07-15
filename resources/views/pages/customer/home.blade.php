@@ -127,6 +127,9 @@
 
         </div>
         {{-- <livewire:merchants.merchants-filter /> --}}
+        <div class="container px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <h4 class="text-2xl font-bold">Daftar Restoran / Kafe</h4>
+        </div>
         <livewire:merchants.customers-merchant-list />
         {{-- <livewire:merchants.merchants-customer-details /> --}}
     </div>
