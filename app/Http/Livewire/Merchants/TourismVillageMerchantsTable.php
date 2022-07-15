@@ -53,7 +53,7 @@ class TourismVillageMerchantsTable extends DataTableComponent
                 ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
                 ->sortable()->excludeFromColumnSelect(),
             Column::make("Action", "merchant_id")
-                ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Merchant', 'name' => $row->merchant_name, 'update_modal' => 'merchants.merchants-admin-details', 'deleteModel' => 'merchants.merchants-table', 'deleteMethod' => 'merchantDelete']))->excludeFromColumnSelect(),
+                ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Merchant', 'name' => $row->merchant_name, 'update_modal' => 'merchants.merchants-details', 'deleteModel' => 'merchants.merchants-table', 'deleteMethod' => 'merchantDelete']))->excludeFromColumnSelect(),
             // Column::make("Updated at", "updated_at")
             //     ->sortable(),
         ];
