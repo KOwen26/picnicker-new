@@ -47,13 +47,12 @@ class TourismVillageMerchantsTable extends DataTableComponent
             Column::make("Join Date", "created_at")
                 ->sortable(),
             Column::make("Open Status", "merchant_open_status")
-                ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
-                ->sortable()->excludeFromColumnSelect(),
+                ->hideIf(true)->excludeFromColumnSelect(),
             Column::make("Merchant Status", "merchant_status")
-                ->format(fn ($value) => view('components.status-badges', ['value' => $value, 'type' => 'regular']))
-                ->sortable()->excludeFromColumnSelect(),
+                ->format(fn ($value, $row) => view('components.status-badges', ['value' => $row->merchant_open_status, 'type' => 'regular']) . '<span class="mx-1"></span>' . view('components.status-badges', ['value' => $value, 'type' => 'regular']))->html()
+                ->excludeFromColumnSelect(),
             Column::make("Action", "merchant_id")
-                ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Merchant', 'name' => $row->merchant_name, 'update_modal' => 'merchants.merchants-details', 'deleteModel' => 'merchants.merchants-table', 'deleteMethod' => 'merchantDelete']))->excludeFromColumnSelect(),
+                ->format(fn ($value, $row) => view('components.table-actions', ['id' => $value, 'title' => 'Merchant', 'name' => $row->merchant_name, 'update_modal' => 'merchants.merchants-admin-details', 'deleteModel' => 'merchants.merchants-table', 'deleteMethod' => 'merchantDelete']))->excludeFromColumnSelect(),
             // Column::make("Updated at", "updated_at")
             //     ->sortable(),
         ];

@@ -17,7 +17,7 @@
                 <li>
                     <div class="flex items-center">
                         <a href="#" class="mr-2 text-sm font-medium text-gray-700 hover:text-primary-900">
-                            Clothing </a>
+                            Restoran </a>
                         <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-5 text-gray-300">
                             <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
@@ -25,10 +25,10 @@
                     </div>
                 </li>
 
-                <li class="text-sm">
+                {{-- <li class="text-sm">
                     <a href="#" aria-current="page" class="font-medium text-gray-500 hover:text-gray-600">
                         Basic Tee 6-Pack </a>
-                </li>
+                </li> --}}
             </ol>
         </nav>
 
@@ -67,7 +67,7 @@
                 <p class="text-gray-600">
                     {{ $merchant?->merchant_address }},
                     {{ Str::title($merchant?->Cities?->city_name) . ', ' . Str::title($merchant?->Cities?->Provinces?->province_name) }}
-                    <span class="">
+                    <span class="text-danger-900">
                         (xx km)</span>
                 </p>
             </div>
@@ -132,7 +132,7 @@
                             <legend class="sr-only">Choose a color</legend>
                             <div class="flex items-center space-x-3">
                                 {{-- Active and Checked: "ring ring-offset-1"
-Not Active and Checked: "ring-2" --}}
+                                Not Active and Checked: "ring-2" --}}
                                 <label
                                     class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
                                     <input type="radio" name="color-choice" value="White" class="sr-only"
@@ -181,7 +181,7 @@ Not Active and Checked: "ring-2" --}}
                                         aria-labelledby="size-choice-1-label">
                                     <span id="size-choice-1-label"> XS </span>
                                     {{-- Active: "border", Not Active: "border-2"
-    Checked: "border-indigo-500", Not Checked: "border-transparent" --}}
+                                Checked: "border-indigo-500", Not Checked: "border-transparent" --}}
                                     <span class="absolute rounded-md pointer-events-none -inset-px"
                                         aria-hidden="true"></span>
                                 </label>

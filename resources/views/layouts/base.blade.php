@@ -25,19 +25,23 @@
     <link href="{{ asset('plugins/fontawesome-6.1.1/css/all.min.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('plugins/datatables-1.11.5/datatables.min.css') }}" rel="stylesheet">
     </link> --}}
-    <link href="{{ asset('plugins/datatables-1.11.5/DataTables-1.11.5/css/jquery.dataTables.min.css') }}"
+    {{-- <link href="{{ asset('plugins/datatables-1.11.5/DataTables-1.11.5/css/jquery.dataTables.min.css') }}"
         rel="stylesheet">
-    </link>
+    </link> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
+    {{-- <link href="css/select2-tailwind.css" rel="stylesheet"> --}}
+    <link href="{{ asset('css/select2-tailwind.css') }}" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ url(mix('js/app.js')) }}" defer></script>
     <script src="{{ asset('js/jquery3.6.0.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-1.11.5/datatables.min.js') }}"></script>
+    {{-- <script src="{{ asset('plugins/datatables-1.11.5/datatables.min.js') }}"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

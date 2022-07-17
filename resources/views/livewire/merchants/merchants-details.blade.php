@@ -156,12 +156,22 @@ $merchant = null;
                         @endif
                         <div>
                             <label for="" class="text-sm text-gray-700">Nama Kota</label>
-                            <select wire:model="city_id" class="w-full mt-1 rounded-md ">
+                            {{-- <select wire:model="city_id" class="w-full mt-1 rounded-md ">
                                 <option>Pilih kota</option>
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
+                            <div wire:ignore class="mt-1">
+                                <select class="w-full rounded-md" id="city-dropdown">
+                                    <option value="">Cari Kota</option>
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->city_id }}">
+                                            {{ Str::title($city->city_name . ', ' . $city->provinces->province_name) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div>
                             <label for="merchant_name" class="text-sm text-gray-700">Nama Merchant</label>
@@ -190,7 +200,7 @@ $merchant = null;
                                 <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div>
+                        {{-- <div>
                             <label for="merchant_address" class="text-sm text-gray-700">Koordinat</label>
                             <input type="text" class="w-full mt-1 rounded-md" onclick="getLocation()"
                                 wire:model="merchant_address" name="merchant_address" id="merchant_address"
@@ -198,13 +208,12 @@ $merchant = null;
                             @error('merchant_address')
                                 <span class="text-sm font-medium text-danger-900">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="">
                             <label for="merchant_description" class="text-sm text-gray-700">Deskripsi Merchant</label>
                             <br>
                             <textarea class="w-full mt-1 rounded-md" wire:model="merchant_description" name="merchant_description"
                                 id="merchant_description" cols="10" rows="4">
-
                             </textarea>
                         </div>
                     </div>
@@ -247,12 +256,24 @@ $merchant = null;
         </div>
     </div>
     <script>
+        $(document).ready(function() {
+            $('#city-dropdown').select2({
+                height: 'resolve',
+            });
+            $('#city-dropdown').on('change', function(e) {
+                var data = $('#city-dropdown').select2("val");
+                @this.set('city_id', data);
+            });
+        });
+
         function getLocation() {
             navigator.geolocation.getCurrentPosition((location) => {
-                console.log(location);
+                // console.log(location);
                 console.log(location.coords.latitude);
                 console.log(location.coords.longitude);
-                console.log(location.coords.accuracy);
+                @this.set('latitude', location.coords.latitude);
+                @this.set('longitude', location.coords.longitude);
+                // console.log(location.coords.accuracy);
             });
         }
     </script>

@@ -23,6 +23,8 @@ Route::prefix('v1')->group(function () {
     Route::prefix('/merchants')->group(function () {
         Route::controller(MerchantsController::class)->group(function () {
             Route::get('/all', 'apiIndex');
+            Route::get('/all/{params}', 'apiSearch');
+            Route::get('/details/{id}', 'apiShow');
         });
     });
 });

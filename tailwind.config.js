@@ -134,6 +134,7 @@ module.exports = {
             "2xl:max-w-7xl'",
         ],
     },
+
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
