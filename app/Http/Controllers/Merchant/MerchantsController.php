@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Merchant\Merchants;
 use App\Http\Controllers\Controller;
 use App\Models\Merchant\MerchantType;
+use Illuminate\Support\Facades\Storage;
 
 class MerchantsController extends Controller
 {
@@ -81,7 +82,8 @@ class MerchantsController extends Controller
                 ->orWhere('provinces.province_name', 'LIKE', '%' . $params . '%');
         })->get()->map(function ($value, $key) {
             $merchant_pictures = collect(json_decode($value->merchant_pictures, true))[0];
-            $merchant_pictures = asset(str_replace('public', 'storage',  $merchant_pictures['picture_location']) . '\\' .  $merchant_pictures['picture_filename']);
+            // $merchant_pictures = asset(str_replace('public', 'storage',  $merchant_pictures['picture_location']) . '\\' .  $merchant_pictures['picture_filename']);
+            $merchant_pictures = Storage::url($merchant_pictures['picture_location'] . '\\' .  $merchant_pictures['picture_filename']);
             return [
                 'attraction_id' => $value->merchant_id,
                 'attraction_name' => $value->merchant_name,
