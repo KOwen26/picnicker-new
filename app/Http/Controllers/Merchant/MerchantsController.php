@@ -57,7 +57,7 @@ class MerchantsController extends Controller
         //         'attraction_review' => $merchant_review,
         //     ];
         // });
-        $merchants = $merchants::TourismVillage()->get()->map(function ($value, $key) {
+        $merchants = $merchants::TourismVillage()->Status('ACTIVE')->get()->map(function ($value, $key) {
             $merchant_pictures = collect(json_decode($value->merchant_pictures, true))[0];
             $merchant_pictures = asset(str_replace('public', 'storage',  $merchant_pictures['picture_location']) . '\\' .  $merchant_pictures['picture_filename']);
             return [
@@ -75,7 +75,7 @@ class MerchantsController extends Controller
 
     public function apiSearch($params, Merchants $merchants)
     {
-        $merchants = $merchants::TourismVillage()->join('merchant_owner', 'merchants.merchant_owner_id', '=', 'merchant_owner.merchant_owner_id')->join('cities', 'merchants.city_id', '=', 'cities.city_id')->join('provinces', 'cities.province_id', '=', 'provinces.province_id')->where(function ($query) use ($params) {
+        $merchants = $merchants::TourismVillage()->Status('ACTIVE')->join('merchant_owner', 'merchants.merchant_owner_id', '=', 'merchant_owner.merchant_owner_id')->join('cities', 'merchants.city_id', '=', 'cities.city_id')->join('provinces', 'cities.province_id', '=', 'provinces.province_id')->where(function ($query) use ($params) {
             $query->where('merchant_name', 'LIKE', '%' . $params . '%')
                 ->orWhere('merchant_owner.merchant_owner_name', 'LIKE', '%' . $params . '%')
                 ->orWhere('cities.city_name', 'LIKE', '%' . $params . '%')
