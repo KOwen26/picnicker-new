@@ -2,10 +2,11 @@
     {{-- {{ dd(json_decode($merchant?->merchant_pictures, null)[0]->picture_location) }} --}}
     <div class="relative group">
         <div
-            class="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
-            <img src="{{ asset(str_replace('public', 'storage', json_decode($merchant?->merchant_pictures, null)[0]->picture_location) . '\\' . json_decode($merchant?->merchant_pictures, null)[0]->picture_filename) }}"
-                alt="Front of men&#039;s Basic Tee in black."
-                class="object-cover object-center w-full h-full lg:w-full lg:h-full">
+            class="w-full h-56 overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:aspect-none">
+            @if ($merchant_pictures)
+                <img src="{{ picture_url($merchant_pictures['picture_location'], $merchant_pictures['picture_filename']) }}"
+                    alt="{{ $merchant_pictures['picture_filename'] }}" class="object-cover w-full h-56 ">
+            @endif
         </div>
         <div class="flex justify-between mt-4">
             <div>
@@ -15,9 +16,24 @@
                         {{ $merchant?->merchant_name }}
                     </a>
                 </h3>
-                <p class="mt-1 text-gray-500">{{ $merchant?->merchant_address }}</p>
+                <p class="block">
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star text-gray-300"></i>
+                </p>
+                <p>
+                    @if ($merchant_distance)
+                        <span class="text-sm font-medium text-secondary-700">{{ $merchant_distance }} km</span>
+                    @endif
+                </p>
+                <p class="mt-1 text-gray-500">
+                    {{ Str::length($merchant?->merchant_address) > 48 ? Str::substr($merchant?->merchant_address, 0, 48) . '...' : $merchant?->merchant_address }}
+                </p>
             </div>
-            <p class="font-medium text-gray-900 ">$35</p>
+            {{-- <p class="text-sm text-gray-900 ">
+            </p> --}}
         </div>
     </div>
 </div>

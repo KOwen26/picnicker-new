@@ -24,7 +24,7 @@ class Merchants extends Model
         'merchant_pictures',
         'merchant_schedule',
     ];
-    protected $hidden = ['merchant_owner_id', 'created_at'];
+    // protected $hidden = ['merchant_owner_id', 'created_at'];
     /**
      * The primary key associated with the table.
      *

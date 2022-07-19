@@ -124,10 +124,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        {{-- <livewire:merchants.merchants-filter /> --}}
+        <livewire:merchants.customers-merchant-filter />
+        <h2 class="text-2xl font-extrabold text-gray-900">Daftar Restoran & Kafe</h2>
         <livewire:merchants.customers-merchant-list />
-        {{-- <livewire:merchants.merchants-customer-details /> --}}
     </div>
 @endsection

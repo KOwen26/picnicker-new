@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Merchant;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Merchant\Merchants;
@@ -71,6 +72,18 @@ class MerchantsController extends Controller
         });
 
         return response()->json($merchants, 200);
+    }
+
+    public function search(Request $request, Merchants $merchants)
+    {
+        $merchants = $merchants::Restaurant()->Status('ACTIVE')->get();
+        $merchant_distance = $merchants->map(function ($item) use ($request) {
+            $latitude = $request->latitude ?? -7.2820496;
+            $longitude = $request->longitude ?? 112.7722238;
+            $item['merchant_distance'] = haversine($latitude, $longitude, $item->merchant_location_latitude, $item->merchant_location_longitude);
+            return $item;
+        })->sortBy(['merchant_distance', 'asc']);
+        return response()->json($merchant_distance, 200);
     }
 
     public function apiSearch($params, Merchants $merchants)

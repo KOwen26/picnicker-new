@@ -10,12 +10,16 @@ class CustomersMerchantDetails extends Component
     protected $listeners = ['refresh' => '$refresh'];
 
     public Merchants $merchant;
-    // public $merchant;
-    // public function mount($merchant)
-    // {
-    //     dd($merchant);
-    //     // $this->merchant = $merchants::find('MRC-220623-1IZW-0002');
-    // }
+    // public $merchant_distance;
+    public function mount()
+    {
+        if ($this->merchant->merchant_location_latitude && $this->merchant->merchant_location_longitude) {
+            // dd(session()->has('longitude'));
+            if (session()->has('latitude') && session()->has('longitude')) {
+                $this->merchant->merchant_distance = haversine(session('latitude'), session('longitude'), $this->merchant->merchant_location_latitude, $this->merchant->merchant_location_longitude);
+            }
+        }
+    }
 
     // public function reserveMerchant()
     // {

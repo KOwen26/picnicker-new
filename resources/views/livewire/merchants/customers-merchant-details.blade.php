@@ -49,12 +49,14 @@
                     alt="Model wearing plain gray basic tee." class="object-cover object-center w-full h-full">
             </div>
         </div> --}}
-            @foreach (json_decode($merchant?->merchant_pictures, null) as $picture)
-                <div class="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-                    <img src="{{ picture_url($picture->picture_location, $picture->picture_filename) }}"
-                        alt="{{ $merchant?->merchant_name }}" class="object-cover object-center w-full h-full">
-                </div>
-            @endforeach
+            @if ($merchant?->merchant_pictures)
+                @foreach (json_decode($merchant?->merchant_pictures, null) as $picture)
+                    <div class="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
+                        <img src="{{ picture_url($picture->picture_location, $picture->picture_filename) }}"
+                            alt="{{ $merchant?->merchant_name }}" class="object-cover object-center w-full h-full">
+                    </div>
+                @endforeach
+            @endif
         </div>
 
         <!-- Product info -->
@@ -64,11 +66,20 @@
                 <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
                     {{ $merchant?->merchant_name }}
                 </h1>
+                <p class="mt-2 mb-6">
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star"></i>
+                    <i class="fa-sm mr-0.5 fas fa-star text-gray-300"></i>
+                </p>
                 <p class="text-gray-600">
-                    {{ $merchant?->merchant_address }},
+                    {{ $merchant?->merchant_address }} -
                     {{ Str::title($merchant?->Cities?->city_name) . ', ' . Str::title($merchant?->Cities?->Provinces?->province_name) }}
-                    <span class="text-danger-900">
-                        (xx km)</span>
+                    -
+                    <span class="text-secondary-700">
+                        {{ $merchant?->merchant_distance }} km
+                    </span>
                 </p>
             </div>
 
@@ -78,7 +89,7 @@
                 {{-- <p class="text-3xl text-gray-900">$192</p> --}}
 
                 <!-- Reviews -->
-                <div class="mt-6">
+                {{-- <div class="mt-6">
                     <h3 class="sr-only">Reviews</h3>
                     <div class="flex items-center">
                         <div class="flex items-center">
@@ -121,18 +132,18 @@
                         <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117
                             reviews</a>
                     </div>
-                </div>
+                </div> --}}
                 {{-- form --}}
                 <div class="mt-10">
                     <!-- Colors -->
-                    <div>
+                    {{-- <div>
                         <h3 class="text-sm font-medium text-gray-900">Color</h3>
 
                         <fieldset class="mt-4">
                             <legend class="sr-only">Choose a color</legend>
                             <div class="flex items-center space-x-3">
-                                {{-- Active and Checked: "ring ring-offset-1"
-                                Not Active and Checked: "ring-2" --}}
+                                <!-- Active and Checked: "ring ring-offset-1"
+                                Not Active and Checked: "ring-2" -->
                                 <label
                                     class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
                                     <input type="radio" name="color-choice" value="White" class="sr-only"
@@ -144,10 +155,10 @@
 
                             </div>
                         </fieldset>
-                    </div>
+                    </div> --}}
 
                     <!-- Sizes -->
-                    <div class="mt-10">
+                    {{-- <div class="mt-10">
                         <div class="flex items-center justify-between">
                             <h3 class="text-sm font-medium text-gray-900">Size</h3>
                             <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size
@@ -180,14 +191,14 @@
                                     <input type="radio" name="size-choice" value="XS" class="sr-only"
                                         aria-labelledby="size-choice-1-label">
                                     <span id="size-choice-1-label"> XS </span>
-                                    {{-- Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent" --}}
+                                    <!-- Active: "border", Not Active: "border-2"
+                                Checked: "border-indigo-500", Not Checked: "border-transparent" -->
                                     <span class="absolute rounded-md pointer-events-none -inset-px"
                                         aria-hidden="true"></span>
                                 </label>
                             </div>
                         </fieldset>
-                    </div>
+                    </div> --}}
 
                     <a @if (auth()->guard('customer')->guest()) wire:click="$emit('openModal','customers.customers-login')" @else
                     href="{{ route('customer.reserve', $merchant->merchant_id) }}" @endif

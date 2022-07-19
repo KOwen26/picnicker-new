@@ -5,7 +5,7 @@
 
             Off-canvas filters for mobile, show/hide based on off-canvas filters state.
           -->
-        <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+        {{-- <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true" x-data="{ offCanvas: true }">
             <!--
               Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 
@@ -16,9 +16,9 @@
                 From: "opacity-100"
                 To: "opacity-0"
             -->
-            <div class="fixed inset-0 bg-black bg-opacity-25"></div>
+            <div class="fixed inset-0 bg-black bg-opacity-25" x-show="offcanvas" @click="offcanvas = false"></div>
 
-            <div class="fixed inset-0 z-40 flex">
+            <div class="fixed inset-0 z-40 flex" x-show="offCanvas">
                 <!--
                 Off-canvas menu, show/hide based on off-canvas menu state.
 
@@ -29,13 +29,14 @@
                   From: "translate-x-0"
                   To: "translate-x-full"
               -->
-                <div
-                    class="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
+                <div class="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl"
+                    :class="{ 'active': offCanvas }">
                     <div class="flex items-center justify-between px-4">
                         <h2 class="text-lg font-medium text-gray-900">Filters</h2>
-                        <button type="button"
+                        <button @click="offCanvas = false" type="button"
                             class="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md">
-                            <span class="sr-only">Close menu</span>
+                            <span class="sr-only">Close
+                                menu</span>
                             <!-- Heroicon name: outline/x -->
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -320,18 +321,18 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <main class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <main class="mx-auto max-w-7xl ">
             <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">New Arrivals</h1>
-
+                <h1 class="text-2xl font-extrabold text-gray-900">Cari Restoran & Kafe</h1>
                 <div class="flex items-center">
-                    <div class="relative inline-block text-left">
+                    <div class="relative inline-block text-left" x-data="{ openDropdown: false }">
                         <div>
                             <button type="button"
                                 class="inline-flex justify-center text-sm font-medium text-gray-700 group hover:text-gray-900"
-                                id="menu-button" aria-expanded="false" aria-haspopup="true">
+                                x-on:click="openDropdown = !openDropdown" id="menu-button" aria-expanded="false"
+                                aria-haspopup="true">
                                 Sort
                                 <!-- Heroicon name: solid/chevron-down -->
                                 <svg class="flex-shrink-0 w-5 h-5 ml-1 -mr-1 text-gray-400 group-hover:text-gray-500"
@@ -355,7 +356,14 @@
                       To: "transform opacity-0 scale-95"
                   -->
                         <div class="absolute right-0 w-40 mt-2 origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
-                            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
+                            x-show="openDropdown"
+                            x-transition:enter="transition-transform ease-out ease-out duration-100"
+                            x-transition:enter-start="opacity-0 transform  scale-95"
+                            x-transition:enter-end="opacity-100 transform scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transition opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 transform scale-95">
                             <div class="py-1" role="none">
                                 <!--
                         Active: "bg-gray-100", Not Active: ""
@@ -363,6 +371,8 @@
                         Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
                       -->
                                 <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
+                                    role="menuitem" tabindex="-1" id="menu-item-0"> Nearest </a>
+                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-500"
                                     role="menuitem" tabindex="-1" id="menu-item-0"> Most Popular </a>
 
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
@@ -371,45 +381,45 @@
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
                                     tabindex="-1" id="menu-item-2"> Newest </a>
 
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
+                                {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
                                     tabindex="-1" id="menu-item-3"> Price: Low to High </a>
 
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
-                                    tabindex="-1" id="menu-item-4"> Price: High to Low </a>
+                                    tabindex="-1" id="menu-item-4"> Price: High to Low </a> --}}
                             </div>
                         </div>
                     </div>
 
-                    <button type="button" class="p-2 ml-5 -m-2 text-gray-400 sm:ml-7 hover:text-gray-500">
+                    {{-- <button type="button" class="p-2 ml-5 -m-2 text-gray-400 sm:ml-7 hover:text-gray-500">
                         <span class="sr-only">View grid</span>
                         <!-- Heroicon name: solid/view-grid -->
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20" fill="currentColor">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor">
                             <path
                                 d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>
-                    </button>
-                    <button type="button" class="p-2 ml-4 -m-2 text-gray-400 sm:ml-6 hover:text-gray-500 lg:hidden">
+                    </button> --}}
+                    {{-- <button type="button" class="p-2 ml-4 -m-2 text-gray-400 sm:ml-6 hover:text-gray-500 lg:hidden">
                         <span class="sr-only">Filters</span>
                         <!-- Heroicon name: solid/filter -->
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20" fill="currentColor">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
                                 clip-rule="evenodd" />
                         </svg>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
 
             <section aria-labelledby="products-heading" class="pt-6 pb-24">
                 <h2 id="products-heading" class="sr-only">Products</h2>
 
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-x-8 gap-y-10">
                     <!-- Filters -->
                     <form class="hidden lg:block">
                         <h3 class="sr-only">Categories</h3>
-                        <ul role="list"
+                        {{-- <ul role="list"
                             class="pb-6 space-y-4 text-sm font-medium text-gray-900 border-b border-gray-200">
                             <li>
                                 <a href="#"> Totes </a>
@@ -430,9 +440,9 @@
                             <li>
                                 <a href="#"> Laptop Sleeves </a>
                             </li>
-                        </ul>
+                        </ul> --}}
 
-                        <div class="py-6 border-b border-gray-200">
+                        {{-- <div class="py-6 border-b border-gray-200">
                             <h3 class="flow-root -my-3">
                                 <!-- Expand/collapse section button -->
                                 <button type="button"
@@ -507,9 +517,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="py-6 border-b border-gray-200">
+                        {{-- <div class="py-6 border-b border-gray-200">
                             <h3 class="flow-root -my-3">
                                 <!-- Expand/collapse section button -->
                                 <button type="button"
@@ -586,9 +596,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="py-6 border-b border-gray-200">
+                        {{-- <div class="py-6 border-b border-gray-200">
                             <h3 class="flow-root -my-3">
                                 <!-- Expand/collapse section button -->
                                 <button type="button"
@@ -662,19 +672,24 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                     <!-- Product grid -->
-                    <div class="md:col-span-3">
-                        <div class="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div class="md:col-span-4">
+                        <div class="max-w-2xl px-4 py-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
+                            <button type="button" onclick="getLocation()"
+                                class="px-8 py-3 mt-4 text-base font-medium text-white rounded-lg bg-info-700 ">Gunakan
+                                lokasi saat ini</button>
+                            <span>Lokasi saat ini : {{ $latitude }}, {{ $longitude }}</span>
                             <div
                                 class="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                <livewire:merchants.merchants-customer-card />
-                                <livewire:merchants.merchants-customer-card />
-                                <livewire:merchants.merchants-customer-card />
-                                <livewire:merchants.merchants-customer-card />
-                                <livewire:merchants.merchants-customer-card />
-                                <livewire:merchants.merchants-customer-card />
+
+                                @foreach ($merchants as $merchant)
+                                    {{-- <span>{{ $merchant->merchant_distance }}</span> --}}
+                                    <livewire:merchants.customers-merchant-cards key="{{ $loop->iteration }}"
+                                        :merchant="$merchant" :merchant_distance='$merchant->merchant_distance' />
+                                    {{-- {{ $merchant?->merchant_distance }} --}}
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -682,4 +697,18 @@
             </section>
         </main>
     </div>
+    <script>
+        function getLocation() {
+
+            navigator.geolocation.getCurrentPosition((location) => {
+                // console.log(location);
+                console.log(location.coords.latitude);
+                console.log(location.coords.longitude);
+                // console.log(location.coords.accuracy);
+                @this.set('latitude', location.coords.latitude);
+                @this.set('longitude', location.coords.longitude);
+                @this.emitSelf('search');
+            });
+        }
+    </script>
 </div>
