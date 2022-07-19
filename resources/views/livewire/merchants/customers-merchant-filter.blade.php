@@ -324,8 +324,8 @@
         </div> --}}
 
         <main class="mx-auto max-w-7xl ">
-            <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-                <h1 class="text-2xl font-extrabold text-gray-900">Cari Restoran & Kafe</h1>
+            <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 mx-4 border-b border-gray-200">
+                <h1 class="text-2xl font-extrabold text-gray-900 ">Cari Restoran & Kafe</h1>
                 <div class="flex items-center">
                     <div class="relative inline-block text-left" x-data="{ openDropdown: false }">
                         <div>

@@ -1,7 +1,7 @@
 @extends('layouts.customer')
 @section('content')
     <div class="pt-10">
-        <div class="container">
+        {{-- <div class="container">
             <div id="default-carousel" class="relative" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
@@ -65,11 +65,11 @@
                     </span>
                 </button>
             </div>
-        </div>
+        </div> --}}
         <div>
             <div class="bg-gray-100">
                 <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div class="max-w-2xl py-16 mx-auto sm:py-24 lg:py-32 lg:max-w-none">
+                    <div class="max-w-2xl py-12 mx-auto lg:max-w-none">
                         <h2 class="text-2xl font-extrabold text-gray-900">Collections</h2>
 
                         <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
@@ -126,7 +126,9 @@
             </div>
         </div>
         <livewire:merchants.customers-merchant-filter />
-        <h2 class="text-2xl font-extrabold text-gray-900">Daftar Restoran & Kafe</h2>
+        <div class="mx-auto max-w-7xl">
+            <h2 class="text-2xl font-extrabold text-gray-900">Daftar Restoran & Kafe</h2>
+        </div>
         <livewire:merchants.customers-merchant-list />
     </div>
 @endsection

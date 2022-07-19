@@ -27,8 +27,10 @@ class CustomersMerchantFilter extends Component
         session(['latitude' => $this->latitude, 'longitude' => $this->longitude]);
         // dd(session('longitude'));
         $merchant_distance = $this->merchants->whereIn('merchant_id', ['MRC-220718-TEST-0006', 'MRC-220718-TEST-0010', 'MRC-220718-TEST-0016', 'MRC-220718-TEST-0017'])->map(function ($item) {
-            $latitude = $this->latitude ?? -7.2820496;
-            $longitude = $this->longitude ?? 112.7722238;
+            // $latitude = $this->latitude ?? -7.2820496;
+            // $longitude = $this->longitude ?? 112.7722238;
+            $latitude = -7.2820496;
+            $longitude = 112.7722238;
             $item['merchant_distance'] = haversine($latitude, $longitude, $item->merchant_location_latitude, $item->merchant_location_longitude);
             return $item;
         })->sortBy(['merchant_distance', 'asc']);
