@@ -44,6 +44,11 @@ class Transactions extends Model
         return $this->hasOne(Payments::class, $this->primaryKey, $this->primaryKey);
     }
 
+    public function CustomerFeedback()
+    {
+        return $this->hasMany(CustomerFeedback::class, $this->primaryKey, $this->primaryKey);
+    }
+
     public function TransactionId()
     {
         $year = date("y");

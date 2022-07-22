@@ -204,7 +204,8 @@
                                 Nama Pemesan
                             </label>
                             <p class="font-medium">
-                                {{ Str::title(auth()->guard('customer')->user()->customer_name) }}
+                                {{-- {{ Str::title(auth()->guard('customer')->user()->customer_name) }} --}}
+                                {{ Str::title($transaction?->customer?->customer_name) }}
                             </p>
                         </div>
                         <div class="">
@@ -212,7 +213,7 @@
                                 Kontak Pemesan
                             </label>
                             <p class="font-medium">
-                                {{ auth()?->guard('customer')?->user()?->customer_phone ?:'-' }}
+                                {{ $transaction?->customer?->customer_phone ?: '-' }}
                             </p>
                         </div>
                     </div>
@@ -222,12 +223,15 @@
                 <div>
                     <div class="grid w-full gap-4 mt-4 ">
                         <div>
-                            <label for="" class="block mb-1 text-sm font-medium text-gray-500 ">
-                                Rating
-                            </label>
-                            <label for="" class="block mb-1 text-sm font-medium text-gray-500 ">
-                                Review
-                            </label>
+                            @if (empty($customer_feedback) && $transaction->transaction_status == 'FINISHED')
+                                @livewire('customer-feedback.customer-feedback-input', ['transaction_id' => $transaction->transaction_id])
+                            @elseif($transaction->transaction_status == 'FINISHED')
+                                @livewire('customer-feedback.customer-feedback-details', ['merchant_id' => $transaction->merchant_id])
+                            @else
+                                <div>
+                                    Selesaikan transaksi untuk memberi rating
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

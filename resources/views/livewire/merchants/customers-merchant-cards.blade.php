@@ -16,13 +16,9 @@
                         {{ $merchant?->merchant_name }}
                     </a>
                 </h3>
-                <p class="block">
-                    <i class="fa-sm mr-0.5 fas fa-star"></i>
-                    <i class="fa-sm mr-0.5 fas fa-star"></i>
-                    <i class="fa-sm mr-0.5 fas fa-star"></i>
-                    <i class="fa-sm mr-0.5 fas fa-star"></i>
-                    <i class="fa-sm mr-0.5 fas fa-star text-gray-300"></i>
-                </p>
+                <div>
+                    @livewire('customer-feedback.customer-feedback-total-rating', ['merchant_id' => $merchant->merchant_id, 'label' => false])
+                </div>
                 <p>
                     @if ($merchant_distance)
                         <span

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Transactions;
 
+use App\Models\Customer\CustomerFeedback;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Customer\Payments;
@@ -13,6 +14,7 @@ class CustomersTransactionsDetails extends Component
     use WithFileUploads;
     public Transactions $transaction;
     protected $listeners = ['refreshComponent' => '$refresh'];
+    // public $customer_feedback;
     public $merchant_pictures;
     public $picture;
     public $payment, $payment_proof;
@@ -48,6 +50,7 @@ class CustomersTransactionsDetails extends Component
 
     public function render()
     {
-        return view('livewire.transactions.customers-transactions-details')->extends('layouts.customer')->section('content');
+        $customer_feedback = CustomerFeedback::where('transaction_id', $this->transaction->transaction_id)->first();
+        return view('livewire.transactions.customers-transactions-details', ['customer_feedback' => $customer_feedback])->extends('layouts.customer')->section('content');
     }
 }

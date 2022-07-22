@@ -66,13 +66,16 @@
                 <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
                     {{ $merchant?->merchant_name }}
                 </h1>
-                <p class="mt-2 mb-6">
+                <div class="block">
+                    @livewire('customer-feedback.customer-feedback-total-rating', ['merchant_id' => $merchant->merchant_id])
+                </div>
+                {{-- <p class="mt-2 mb-6">
                     <i class="fa-sm mr-0.5 fas fa-star"></i>
                     <i class="fa-sm mr-0.5 fas fa-star"></i>
                     <i class="fa-sm mr-0.5 fas fa-star"></i>
                     <i class="fa-sm mr-0.5 fas fa-star"></i>
                     <i class="fa-sm mr-0.5 fas fa-star text-gray-300"></i>
-                </p>
+                </p> --}}
                 <p class="text-gray-600">
                     {{ $merchant?->merchant_address }} -
                     {{ Str::title($merchant?->Cities?->city_name) . ', ' . Str::title($merchant?->Cities?->Provinces?->province_name) }}
@@ -254,6 +257,12 @@
                         <p class="text-sm text-gray-600">
                             {{ $merchant?->merchant_description }}
                         </p>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <h2 class="text-sm font-medium text-gray-900">Review Pelanggan</h2>
+                    <div class="mt-4 space-y-6">
+                        @livewire('customer-feedback.customer-feedback-details', ['merchant_id' => $merchant->merchant_id])
                     </div>
                 </div>
             </div>
