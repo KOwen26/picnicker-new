@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+
 if (!function_exists('day_name')) {
     function day_name()
     {
@@ -59,4 +64,40 @@ if (!function_exists('haversine')) {
         $distance = round($earth_radius * (2 * asin(sqrt($distance_1))), 3);
         return $distance;
     };
+}
+
+if (!function_exists('collectionPaginate')) {
+    function collectionPaginate(Collection $results, $pageSize)
+    {
+        $page = Paginator::resolveCurrentPage('page');
+
+        $total = $results->count();
+
+        return collectionPaginator($results->forPage($page, $pageSize), $total, $pageSize, $page, [
+            'path' => Paginator::resolveCurrentPath(),
+            'pageName' => 'page',
+        ]);
+    }
+}
+if (!function_exists('collectionPaginator')) {
+    /**
+     * Create a new length-aware paginator instance.
+     *
+     * @param  \Illuminate\Support\Collection  $items
+     * @param  int  $total
+     * @param  int  $perPage
+     * @param  int  $currentPage
+     * @param  array  $options
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    function collectionPaginator($items, $total, $perPage, $currentPage, $options)
+    {
+        return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
+            'items',
+            'total',
+            'perPage',
+            'currentPage',
+            'options'
+        ));
+    }
 }

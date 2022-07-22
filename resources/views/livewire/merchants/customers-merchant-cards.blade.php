@@ -25,7 +25,9 @@
                 </p>
                 <p>
                     @if ($merchant_distance)
-                        <span class="text-sm font-medium text-secondary-700">{{ $merchant_distance }} km</span>
+                        <span
+                            class="text-sm font-medium text-secondary-700">{{ number_format($merchant_distance, 3, ',', '.') }}
+                            km</span>
                     @endif
                 </p>
                 <p class="mt-1 text-gray-500">

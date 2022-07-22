@@ -17,12 +17,17 @@
                     </span>
                 </button>
                 <div class="relative hidden md:block">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="w-full text-gray-600 fas fa-magnifying-glass"></i>
-                    </div>
-                    <input type="text" id="search-navbar"
-                        class="block w-full p-2 pl-10 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-900 focus:border-primary-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-900 dark:focus:border-primary-900"
-                        placeholder="Cari Restoran">
+                    <form wire:submit.prevent='search' onsubmit="getRouteName()">
+                        @php
+                            $route_helper = Route::currentRouteName();
+                        @endphp
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="w-full text-gray-600 fas fa-magnifying-glass"></i>
+                        </div>
+                        <input type="text" id="search-navbar" wire:model="params" onclick="getLocation()"
+                            class="block w-full p-2 pl-10 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-900 focus:border-primary-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-900 dark:focus:border-primary-900"
+                            placeholder="Cari Restoran">
+                    </form>
                 </div>
                 <button data-collapse-toggle="mobile-menu-3" type="button"
                     class="inline-flex items-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -110,5 +115,19 @@
         </div>
     </div>
 </nav>
+<script>
+    function getRouteName() {
+        let current_route = '{{ Route::currentRouteName() }}';
+        @this.set('route', current_route);
+    }
 
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition((location) => {
+            console.log(location.coords.latitude);
+            console.log(location.coords.longitude);
+            @this.set('latitude', location.coords.latitude);
+            @this.set('longitude', location.coords.longitude);
+        });
+    }
+</script>
 </header>

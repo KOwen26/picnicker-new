@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer\Customers;
+use App\Models\Merchant\Merchants;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -13,9 +14,9 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Merchants $merchants)
     {
-        return view('pages.customer.home');
+        return view('pages.customer.home', ['merchants' => $merchants->Restaurant()->status('ACTIVE')->take(6)->get()]);
     }
 
     /**

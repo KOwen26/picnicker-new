@@ -70,65 +70,72 @@
             <div class="bg-gray-100">
                 <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div class="max-w-2xl py-12 mx-auto lg:max-w-none">
-                        <h2 class="text-2xl font-extrabold text-gray-900">Collections</h2>
-
+                        <h2 class="text-2xl font-extrabold text-gray-900">Our Resto & Cafe Collections</h2>
                         <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
                             <div class="relative group">
                                 <div
                                     class="relative w-full overflow-hidden bg-white rounded-lg h-80 group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
-                                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                                    <img src="{{ asset('images/cafe1.webp') }}" alt="Cafe"
                                         class="object-cover object-center w-full h-full">
                                 </div>
-                                <h3 class="mt-6 text-sm text-gray-500">
+                                {{-- <h3 class="mt-6 text-sm text-gray-500">
                                     <a href="#">
                                         <span class="absolute inset-0"></span>
                                         Desk and Office
                                     </a>
                                 </h3>
-                                <p class="text-base font-semibold text-gray-900">Work from home accessories</p>
+                                <p class="text-base font-semibold text-gray-900">Work from home accessories</p> --}}
                             </div>
 
                             <div class="relative group">
                                 <div
                                     class="relative w-full overflow-hidden bg-white rounded-lg h-80 group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
-                                        alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
+                                    <img src="{{ asset('images/cafe2.webp') }}" alt="Cafe"
                                         class="object-cover object-center w-full h-full">
                                 </div>
-                                <h3 class="mt-6 text-sm text-gray-500">
+                                {{-- <h3 class="mt-6 text-sm text-gray-500">
                                     <a href="#">
                                         <span class="absolute inset-0"></span>
                                         Self-Improvement
                                     </a>
                                 </h3>
-                                <p class="text-base font-semibold text-gray-900">Journals and note-taking</p>
+                                <p class="text-base font-semibold text-gray-900">Journals and note-taking</p> --}}
                             </div>
 
                             <div class="relative group">
                                 <div
                                     class="relative w-full overflow-hidden bg-white rounded-lg h-80 group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
-                                        alt="Collection of four insulated travel bottles on wooden shelf."
+                                    <img src="{{ asset('images/cafe3.webp') }}" alt="Cafe"
                                         class="object-cover object-center w-full h-full">
                                 </div>
-                                <h3 class="mt-6 text-sm text-gray-500">
+                                {{-- <h3 class="mt-6 text-sm text-gray-500">
                                     <a href="#">
                                         <span class="absolute inset-0"></span>
                                         Travel
                                     </a>
                                 </h3>
-                                <p class="text-base font-semibold text-gray-900">Daily commute essentials</p>
+                                <p class="text-base font-semibold text-gray-900">Daily commute essentials</p> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <livewire:merchants.customers-merchant-filter />
-        <div class="mx-auto max-w-7xl">
-            <h2 class="text-2xl font-extrabold text-gray-900">Daftar Restoran & Kafe</h2>
+        <div>
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between my-6">
+                    <h2 class="text-2xl font-extrabold text-gray-900 ">Daftar Restoran & Kafe
+                    </h2>
+                    <a class="text-base font-medium text-secondary-900" href="{{ route('customer.merchant-list') }}">Lihat
+                        Semua</a>
+                </div>
+            </div>
+            <livewire:merchants.customers-merchant-list :merchants="$merchants" />
         </div>
-        <livewire:merchants.customers-merchant-list />
+        <div>
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                {{-- <livewire:merchants.customers-merchant-filter /> --}}
+            </div>
+        </div>
     </div>
 @endsection

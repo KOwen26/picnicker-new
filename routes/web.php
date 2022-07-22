@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Customer\CustomersController;
 use App\Http\Controllers\Customer\CustomerFeedbackController;
 use App\Http\Controllers\Customer\TransactionsController;
+use App\Http\Controllers\Merchant\MerchantsController;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
@@ -42,6 +43,8 @@ use App\Http\Livewire\Transactions\CustomersTransactionsDetails;
 // Customer Sides
 Route::name('customer')->group(function () {
     Route::get('/', [CustomersController::class, 'index'])->name('.home');
+    Route::get('/merchant-list', [MerchantsController::class, 'customerIndex'])->name('.merchant-list');
+    Route::get('/search-result/{params?}', [MerchantsController::class, 'searchIndex'])->name('.search-result');
     // Route::get('/login', [CustomersController::class, 'index'])->name('.login');
     // Route::get('/register', [CustomersController::class, 'index'])->name('.register');
     Route::get('/find/{merchant}', CustomersMerchantDetails::class)->name('.find');

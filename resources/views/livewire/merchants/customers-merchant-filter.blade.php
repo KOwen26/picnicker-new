@@ -370,16 +370,24 @@
 
                         Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
                       -->
-                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
-                                    role="menuitem" tabindex="-1" id="menu-item-0"> Nearest </a>
-                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-500"
-                                    role="menuitem" tabindex="-1" id="menu-item-0"> Most Popular </a>
+                                <span href="#" wire:click="sort('merchant_distance','asc')"
+                                    class="block px-4 py-2 text-sm font-medium text-gray-900 hover:cursor-pointer"
+                                    role="menuitem" tabindex="-1" id="menu-item-0"> Terdekat </span>
+                                <span href="#" wire:click="sort('merchant_distance','desc')"
+                                    class="block px-4 py-2 text-sm font-medium text-gray-500 hover:cursor-pointer"
+                                    role="menuitem" tabindex="-1" id="menu-item-0"> Terjauh </span>
+                                <span href="#" wire:click="sort('merchant_name','asc')"
+                                    class="block px-4 py-2 text-sm font-medium text-gray-500 hover:cursor-pointer"
+                                    role="menuitem" tabindex="-1" id="menu-item-0"> A - Z </span>
+                                <span href="#" wire:click="sort('merchant_name','desc')"
+                                    class="block px-4 py-2 text-sm font-medium text-gray-500 hover:cursor-pointer"
+                                    role="menuitem" tabindex="-1" id="menu-item-0">Z - A </span>
 
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
+                                {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
                                     tabindex="-1" id="menu-item-1"> Best Rating </a>
 
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
-                                    tabindex="-1" id="menu-item-2"> Newest </a>
+                                    tabindex="-1" id="menu-item-2"> Newest </a> --}}
 
                                 {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-500" role="menuitem"
                                     tabindex="-1" id="menu-item-3"> Price: Low to High </a>
@@ -677,19 +685,20 @@
                     <!-- Product grid -->
                     <div class="md:col-span-4">
                         <div class="max-w-2xl px-4 py-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
-                            <button type="button" onclick="getLocation()"
+                            {{-- <button type="button" onclick="getLocation()"
                                 class="px-8 py-3 mt-4 text-base font-medium text-white rounded-lg bg-info-700 ">Gunakan
-                                lokasi saat ini</button>
-                            <span>Lokasi saat ini : {{ $latitude }}, {{ $longitude }}</span>
+                                lokasi saat ini</button> --}}
+                            <span>Lokasi saat ini : {{ $latitude }}, {{ $longitude }}, {{ $sort_attribute }},
+                                {{ $sort_direction }}</span>
+                            {{-- {{ dd($merchants) }} --}}
                             <div
                                 class="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-
                                 @foreach ($merchants as $merchant)
-                                    {{-- <span>{{ $merchant->merchant_distance }}</span> --}}
-                                    <livewire:merchants.customers-merchant-cards key="{{ $loop->iteration }}"
-                                        :merchant="$merchant" :merchant_distance='$merchant->merchant_distance' />
-                                    {{-- {{ $merchant?->merchant_distance }} --}}
+                                    @livewire('merchants.customers-merchant-cards', ['merchant' => $merchant, 'merchant_distance' => $merchant->merchant_distance], key($merchant->merchant_id))
                                 @endforeach
+                            </div>
+                            <div class="mt-6">
+                                {{ $merchants?->links() }}
                             </div>
                         </div>
                     </div>
@@ -707,8 +716,14 @@
                 // console.log(location.coords.accuracy);
                 @this.set('latitude', location.coords.latitude);
                 @this.set('longitude', location.coords.longitude);
-                @this.emitSelf('search');
+                // @this.emitSelf('search');
             });
+        }
+
+        function sort(attribute, direction) {
+            // console.log(attribute, direction);
+            @this.set('sort_attribute', attribute);
+            @this.set('sort_direction', direction);
         }
     </script>
 </div>
